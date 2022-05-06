@@ -1,0 +1,28 @@
+img {
+    height: 60px;
+    width: 60px;
+    animation: rotatingLogo 2s linear infinite;
+}
+
+@keyframes rotatingLogo {
+    0% {
+        transform: rotate(360deg) scale(1);
+    }
+
+    75% {
+        transform: rotate(0) scale(1.1);
+    }
+
+
+    100% {
+        transform: rotate(0) scale(1);
+    }
+
+    // from {
+    //     transform: rotate(0)
+    // }
+
+    // to {
+    //     transform: rotate(360deg)
+    // }
+}
