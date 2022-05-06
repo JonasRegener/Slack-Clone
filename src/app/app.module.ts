@@ -12,7 +12,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
-import { DashboardComponent } from './authentication/dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignInComponent } from './authentication/sign-in/sign-in.component';
 import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './authentication/forgot-password/forgot-password.component';

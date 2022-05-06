@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { AuthService } from '../services/auth.service';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(
+    public authService: AuthService,
+    firestore: AngularFirestore) { }
 
   ngOnInit(): void {
   }
