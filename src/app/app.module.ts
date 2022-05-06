@@ -12,11 +12,22 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
+import { DashboardComponent } from './authentication/dashboard/dashboard.component';
+import { SignInComponent } from './authentication/sign-in/sign-in.component';
+import { SignUpComponent } from './authentication/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './authentication/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './authentication/verify-email/verify-email.component';
+import { AuthService } from './authentication/services/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    DashboardComponent,
+    SignInComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +40,7 @@ import { LoadingScreenComponent } from './loading-screen/loading-screen.componen
     provideStorage(() => getStorage()),
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
