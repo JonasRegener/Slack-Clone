@@ -1,0 +1,30 @@
+* {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--purple);
+    color: white;
+}
+
+span {
+    margin: 4px;
+}
+
+.displayTable {
+    height: 100vh;
+}
+
+.redirect {
+    &:hover {
+        color: var(--darkGrey);
+        cursor: pointer;
+    }
+}
+
+.txt-forgotPassword {
+    &:hover {
+        color: var(--darkGrey);
+        cursor: pointer;
+    }
+}
