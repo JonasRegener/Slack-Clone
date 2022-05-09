@@ -1,9 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 * {
-    --purple: #673AB7;
-    --darkGrey: #212529;
+    --purple: #3F103F;
+    --darkGrey: rgb(51, 51, 51);
+    --orange: #fbb03c;
+    font-size: 16px;
+}
+
+h3 {
+    font-size: 30px !important;
+    margin-bottom: 30px !important;
+}
+
+input {
+    margin: 7.5px;
+    padding: 5px;
+    border-radius: 5px;
+    color: black !important;
+    outline: none;
+    width: 250px;
+    border: none;
+    height: 40px;
+}
+
+span {
+    margin: 5px !important;
+}
+
+.backgroundDesign {
+    background-color: #8F60BB;
+    height: 1000px;
+    width: 1000px;
+    position: fixed;
+    right: 100;
+    transform: rotate(45deg);
+}
+
+.displayTableCell {
+    z-index: 2;
+}
+
+.btn {
+    background-color: var(--orange);
+    color: black !important;
+    width: 250px;
+
+    &:hover {
+        filter: brightness(0.8)
+    }
+}
+
+.redirectToLogin {
+    flex-direction: initial !important;
+}
+
+.redirect {
+    margin-left: 5px;
+    &:hover {
+        color: var(--darkGrey);
+        cursor: pointer;
+    }
+}
+
+.div-redirectLinks {
+    margin-top: 15px;
+    flex-direction: initial !important;
 }
