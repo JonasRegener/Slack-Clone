@@ -18,6 +18,11 @@ import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './authentication/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './authentication/verify-email/verify-email.component';
 import { AuthService } from './authentication/services/auth.service';
+import { ChatFieldComponent } from './chat-field/chat-field.component';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
+import {MatBadgeModule} from '@angular/material/badge';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +32,8 @@ import { AuthService } from './authentication/services/auth.service';
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    ChatFieldComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,10 @@ import { AuthService } from './authentication/services/auth.service';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    PickerModule,
+    EmojiModule,
+    MatBadgeModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
