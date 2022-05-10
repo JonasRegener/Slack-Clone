@@ -19,8 +19,6 @@ import { ForgotPasswordComponent } from './authentication/forgot-password/forgot
 import { VerifyEmailComponent } from './authentication/verify-email/verify-email.component';
 import { AuthService } from './authentication/services/auth.service';
 import { ChatFieldComponent } from './chat-field/chat-field.component';
-import { PickerModule } from '@ctrl/ngx-emoji-mart';
-import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { MatBadgeModule } from '@angular/material/badge';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -31,7 +29,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 
 @NgModule({
   declarations: [
@@ -56,8 +55,6 @@ import { MatListModule } from '@angular/material/list';
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     AngularFirestoreModule,
-    PickerModule,
-    EmojiModule,
     MatBadgeModule,
     MatToolbarModule,
     MatIconModule,
@@ -65,7 +62,9 @@ import { MatListModule } from '@angular/material/list';
     MatInputModule,
     MatTooltipModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    PickerModule,
+    EmojiModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
