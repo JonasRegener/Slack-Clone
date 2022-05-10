@@ -18,12 +18,10 @@ import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './authentication/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './authentication/verify-email/verify-email.component';
 import { AuthService } from './authentication/services/auth.service';
-<<<<<<< HEAD
 import { ChatFieldComponent } from './chat-field/chat-field.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
-import {MatBadgeModule} from '@angular/material/badge';
-=======
+import { MatBadgeModule } from '@angular/material/badge';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -33,7 +31,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
->>>>>>> 3299ee904c01fb9b4047c42e53242e1090413fb6
 
 
 @NgModule({
@@ -45,12 +42,9 @@ import { MatListModule } from '@angular/material/list';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-<<<<<<< HEAD
-    ChatFieldComponent
-=======
+    ChatFieldComponent,
     HeaderComponent,
     SidebarComponent
->>>>>>> 3299ee904c01fb9b4047c42e53242e1090413fb6
   ],
   imports: [
     BrowserModule,
@@ -62,11 +56,9 @@ import { MatListModule } from '@angular/material/list';
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     AngularFirestoreModule,
-<<<<<<< HEAD
     PickerModule,
     EmojiModule,
-    MatBadgeModule
-=======
+    MatBadgeModule,
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
@@ -74,7 +66,6 @@ import { MatListModule } from '@angular/material/list';
     MatTooltipModule,
     MatSidenavModule,
     MatListModule
->>>>>>> 3299ee904c01fb9b4047c42e53242e1090413fb6
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
