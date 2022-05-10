@@ -1,0 +1,24 @@
+.headerbar-container {
+    display: flex;
+
+
+}
+
+mat-toolbar-row {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.user_container {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+}
+
+mat-form-field {
+    width: 450px;
+}
