@@ -6,9 +6,11 @@ img {
 }
 
 .loading-screen {
+    height: 160px;
+    width: 160px;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: calc(50% - 80px);
+    left: calc(50% - 80px);
     display: flex;
     flex-direction: column;
     justify-content: center;

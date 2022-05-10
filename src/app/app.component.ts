@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Slack-Clone';
+
+  loading = false;  // if true, loading animation is shown
+
 }
