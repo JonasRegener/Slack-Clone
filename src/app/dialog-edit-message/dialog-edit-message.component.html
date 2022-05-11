@@ -1,0 +1,6 @@
+<form [formGroup]="form">
+    <div class="message-field" [class.highlightBorder]="focused">
+        <ngx-editor-menu [editor]="editor2" [toolbar]="toolbar"> </ngx-editor-menu>
+        <ngx-editor [editor]="editor2" formControlName="editorContent" placeholder="Write a message..." [ngModel]="input"> </ngx-editor>
+    </div>
+</form>

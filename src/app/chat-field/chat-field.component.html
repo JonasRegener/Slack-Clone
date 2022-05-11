@@ -7,7 +7,7 @@
     <div>
         <span class="displayName">{{ content.displayName }} <span class="postedAt">{{ content.posted }}</span></span>
         <div>
-            <textarea id="content-{{ i }}" class="content" [readonly]="true">{{ content.content }}</textarea>
+            <textarea id="content-{{ i }}" class="content">{{ content.content }}</textarea>
         </div>
         <div>
             <ngx-emoji *ngIf=content.reactions matBadge="1" matBadgeSize="small" emoji="{{ content.reactions }}">
@@ -20,7 +20,7 @@
         <ngx-emoji emoji="thumbsup" (emojiClick)="addEmoji(i, 'thumbsup')"></ngx-emoji>
         <ngx-emoji emoji="thumbsdown" (emojiClick)="addEmoji(i, 'thumbsdown')"></ngx-emoji>
         <mat-icon matTooltip="Add comment">reply</mat-icon>
-        <mat-icon *ngIf="content.displayName == loggedIn" matTooltip="Edit note" (click)="edit(i)">edit_note</mat-icon>
+        <mat-icon *ngIf="content.displayName == loggedIn" matTooltip="Edit note" (click)="openDialog(content.content)">edit_note</mat-icon>
         <mat-icon *ngIf="content.displayName == loggedIn" matTooltip="Delete">delete</mat-icon>
     </div>
 </div>

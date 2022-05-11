@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-    <div class="message-field">
+    <div class="message-field" [class.highlightBorder]="focused">
         <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
         <ngx-editor [editor]="editor" formControlName="editorContent" placeholder="Write a message..."> </ngx-editor>
     </div>

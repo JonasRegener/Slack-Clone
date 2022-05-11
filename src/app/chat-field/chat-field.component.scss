@@ -113,3 +113,8 @@ textarea {
     bottom: 0; 
     right: 0;
 }
+
+::ng-deep .mat-dialog-container {
+    display: unset !important;
+    padding: unset !important;
+}

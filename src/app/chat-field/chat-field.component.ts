@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogEditMessageComponent } from '../dialog-edit-message/dialog-edit-message.component';
+import { MessageFieldComponent } from '../message-field/message-field.component';
 
 @Component({
   selector: 'app-chat-field',
@@ -34,23 +37,34 @@ export class ChatFieldComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog(content: string) {
+    const dialogRef = this.dialog.open(DialogEditMessageComponent);
+    dialogRef.componentInstance.input = content;
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   addEmoji(index: number, reaction: string) {
     this.channelContent[index].reactions = reaction;
   }
 
-  edit(index: Number) {
-    let content: any = document.getElementById('content-' + index);
-    if(content.readOnly) {
-      content.readOnly = false;
-      content.focus();
-    } else {
-      content.readOnly = true;
-    }
-  }
+  // edit(index: Number) {
+  //   let content: any = document.getElementById('content-' + index);
+  //   if(content.readOnly) {
+  //     content.readOnly = false;
+  //     content.focus();
+  //   } else {
+  //     content.readOnly = true;
+  //   }
+  // }
+
+
 
 }

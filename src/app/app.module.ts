@@ -34,6 +34,9 @@ import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { MessageFieldComponent } from './message-field/message-field.component';
 import { NgxEditorModule, schema } from 'ngx-editor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogEditMessageComponent } from './dialog-edit-message/dialog-edit-message.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +50,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ChatFieldComponent,
     HeaderComponent,
     SidebarComponent,
-    MessageFieldComponent
+    MessageFieldComponent,
+    DialogEditMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +75,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EmojiModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
     NgxEditorModule.forRoot({
       locals: {
         // menu
