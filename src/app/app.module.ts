@@ -31,6 +31,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
+import { MessageFieldComponent } from './message-field/message-field.component';
+import { NgxEditorModule, schema } from 'ngx-editor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,8 @@ import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
     VerifyEmailComponent,
     ChatFieldComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    MessageFieldComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,28 @@ import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
     MatSidenavModule,
     MatListModule,
     PickerModule,
-    EmojiModule
+    EmojiModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxEditorModule.forRoot({
+      locals: {
+        // menu
+        bold: 'Bold',
+        italic: 'Italic',
+        code: 'Code',
+        underline: 'Underline',
+        strike: 'Strike',
+
+        // popups, forms, others...
+        url: 'URL',
+        text: 'Text',
+        openInNewTab: 'Open in new tab',
+        insert: 'Insert',
+        altText: 'Alt Text',
+        title: 'Title',
+        remove: 'Remove',
+      },
+    }),
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

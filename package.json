@@ -22,7 +22,9 @@
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
     "@ctrl/ngx-emoji-mart": "^6.2.0",
+    "@syncfusion/ej2-angular-richtexteditor": "^20.1.52",
     "bootstrap": "^5.1.3",
+    "ngx-editor": "^12.3.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

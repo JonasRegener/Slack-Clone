@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatFieldComponent implements OnInit {
 
+  disabled = true;
+  loggedIn = 'Alexander Baraev';
+
   channelContent = [
     {
       displayName: 'Alexander Baraev',
@@ -38,6 +41,16 @@ export class ChatFieldComponent implements OnInit {
 
   addEmoji(index: number, reaction: string) {
     this.channelContent[index].reactions = reaction;
+  }
+
+  edit(index: Number) {
+    let content: any = document.getElementById('content-' + index);
+    if(content.readOnly) {
+      content.readOnly = false;
+      content.focus();
+    } else {
+      content.readOnly = true;
+    }
   }
 
 }

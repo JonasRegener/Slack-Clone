@@ -51,7 +51,7 @@ header {
 
 .reaction-bar {
     height: 40px;
-    width: 300px;
+    width: auto;
     display: none;
     position: absolute;
     top: -15px;
@@ -62,10 +62,54 @@ header {
     padding-left: 8px;
     background-color: white;
 
-    button {
-        font-size: 16px;
-        border: none;
+    ngx-emoji {
         background-color: transparent;
-        margin-right: 8px;
+        margin-right: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 30px;
+        padding-top: 8px;
+        text-align: center;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
     }
+
+    mat-icon {
+        margin-right: 4px;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+
+
+        &:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+    
+    }
+}
+
+textarea {
+    resize: none;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.text-field {
+    width: 100%;
+    position: relative;
+}
+
+.cancel-edit-btn {
+    position: absolute;
+    bottom: 0; 
+    right: 0;
 }
