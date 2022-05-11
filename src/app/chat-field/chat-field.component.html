@@ -4,11 +4,11 @@
     <div>
         <img [src]=content.photoURL>
     </div>
-    <div class="text-field">
+    <div>
         <span class="displayName">{{ content.displayName }} <span class="postedAt">{{ content.posted }}</span></span>
+        <div>
             <textarea id="content-{{ i }}" class="content" [readonly]="true">{{ content.content }}</textarea>
-            <button class="cancel-edit-btn">Cancel</button>
-            <button class="save-edit-btn">Save changes</button>
+        </div>
         <div>
             <ngx-emoji *ngIf=content.reactions matBadge="1" matBadgeSize="small" emoji="{{ content.reactions }}">
             </ngx-emoji>
