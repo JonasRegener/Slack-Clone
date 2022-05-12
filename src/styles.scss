@@ -86,10 +86,14 @@ span {
 .row {
     display: flex !important;
     flex-direction: column !important;
+    margin-right: unset !important;
+    margin-left: unset !important;
 }
 
 .row>* {
     padding-left: unset !important;
     padding-right: unset !important;
+    width: unset !important;
+
 }
 

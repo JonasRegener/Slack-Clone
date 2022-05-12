@@ -6,13 +6,13 @@ header {
     border-bottom: 1px solid lightgray;
     display: flex;
     align-items: center;
-    padding-left: 16px;
+    padding-left: 24px;
 }
 
 .content-entry {
     width: 100%;
     height: auto;
-    padding: 8px 16px 8px 16px;
+    padding: 8px 24px 8px 24px;
     display: flex;
     flex-direction: row;
     position: relative;
@@ -127,13 +127,13 @@ textarea {
 
 .channel-field {
     height: 100vh;
-    width: 100%;
+    width: 100vw !important;
     position: relative;
 }
 
 .thread-field {
     height: 100vh;
-    width: 30%;
+    width: 30vw;
     position: relative;
 }
 
@@ -147,15 +147,16 @@ textarea {
 .message-field-thread-position {
     position: absolute;
     bottom: 24px;
-    left: 32px;
-    right: 32px;
+    left: 24px;
+    right: 24px;
 }
 
 .show-thread-field {
-    width:70% !important;
+    width:70vw !important;
 }
 
 .border-left{
     border-left: 1px solid lightgray;
     height: 100vh;
+    width: 30% !important;
 }

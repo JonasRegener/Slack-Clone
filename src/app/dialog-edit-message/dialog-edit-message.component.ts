@@ -44,7 +44,7 @@ export class DialogEditMessageComponent implements OnInit, OnDestroy {
 
   saveChanges() {
     let changes: any = document.querySelectorAll('.NgxEditor__Content > p');
-    this.input.content = changes[1].innerHTML;
+    this.input.content = changes[2].innerHTML;
     this.firestore
       .collection('channels/' + this.currentChannel + '/threads')
       .doc(this.input.customIdName)
