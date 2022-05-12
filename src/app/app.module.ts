@@ -18,7 +18,7 @@ import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './authentication/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './authentication/verify-email/verify-email.component';
 import { AuthService } from './authentication/services/auth.service';
-import { UserIconMenuComponent } from './user-icon-menu/user-icon-menu.component';
+import { ChatFieldComponent } from './chat-field/chat-field.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -29,6 +29,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { MessageFieldComponent } from './message-field/message-field.component';
 import { NgxEditorModule, schema } from 'ngx-editor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -37,7 +39,6 @@ import { DialogEditMessageComponent } from './dialog-edit-message/dialog-edit-me
 import {MatButtonModule} from '@angular/material/button';
 import { ThreadFieldComponent } from './thread-field/thread-field.component';
 import { DialogEditThreadCommentComponent } from './dialog-edit-thread-comment/dialog-edit-thread-comment.component';
-import { ChatFieldComponent } from './chat-field/chat-field.component';
 
 
 @NgModule({
@@ -49,7 +50,6 @@ import { ChatFieldComponent } from './chat-field/chat-field.component';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    UserIconMenuComponent,
     ChatFieldComponent,
     HeaderComponent,
     SidebarComponent,
@@ -76,6 +76,8 @@ import { ChatFieldComponent } from './chat-field/chat-field.component';
     MatTooltipModule,
     MatSidenavModule,
     MatListModule,
+    PickerModule,
+    EmojiModule,
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
