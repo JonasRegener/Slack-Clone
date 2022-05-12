@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@ctrl/ngx-emoji-mart/picker';
+
 
 html,
 body {
@@ -76,3 +78,22 @@ span {
     margin-top: 15px;
     flex-direction: initial !important;
 }
+
+.full-width {
+    width: 100%;
+}
+
+.row {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-right: unset !important;
+    margin-left: unset !important;
+}
+
+.row>* {
+    padding-left: unset !important;
+    padding-right: unset !important;
+    width: unset !important;
+
+}
+

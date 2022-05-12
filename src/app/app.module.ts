@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from '../environments/environment';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideStorage,getStorage } from '@angular/fire/storage';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -19,6 +19,26 @@ import { ForgotPasswordComponent } from './authentication/forgot-password/forgot
 import { VerifyEmailComponent } from './authentication/verify-email/verify-email.component';
 import { AuthService } from './authentication/services/auth.service';
 import { UserIconMenuComponent } from './user-icon-menu/user-icon-menu.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MessageFieldComponent } from './message-field/message-field.component';
+import { NgxEditorModule, schema } from 'ngx-editor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogEditMessageComponent } from './dialog-edit-message/dialog-edit-message.component';
+import {MatButtonModule} from '@angular/material/button';
+import { ThreadFieldComponent } from './thread-field/thread-field.component';
+import { DialogEditThreadCommentComponent } from './dialog-edit-thread-comment/dialog-edit-thread-comment.component';
+import { ChatFieldComponent } from './chat-field/chat-field.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +49,14 @@ import { UserIconMenuComponent } from './user-icon-menu/user-icon-menu.component
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    UserIconMenuComponent
+    UserIconMenuComponent,
+    ChatFieldComponent,
+    HeaderComponent,
+    SidebarComponent,
+    MessageFieldComponent,
+    DialogEditMessageComponent,
+    ThreadFieldComponent,
+    DialogEditThreadCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +67,38 @@ import { UserIconMenuComponent } from './user-icon-menu/user-icon-menu.component
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatBadgeModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTooltipModule,
+    MatSidenavModule,
+    MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    NgxEditorModule.forRoot({
+      locals: {
+        // menu
+        bold: 'Bold',
+        italic: 'Italic',
+        code: 'Code',
+        underline: 'Underline',
+        strike: 'Strike',
+
+        // popups, forms, others...
+        url: 'URL',
+        text: 'Text',
+        openInNewTab: 'Open in new tab',
+        insert: 'Insert',
+        altText: 'Alt Text',
+        title: 'Title',
+        remove: 'Remove',
+      },
+    }),
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

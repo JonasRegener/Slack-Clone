@@ -1,0 +1,32 @@
+<div class="thread-container">
+    <header>[Thread]</header>
+    <div class="content-field">
+        <div class="content-entry" *ngFor="let content of channelContent; let i = index">
+            <div>
+                <img [src]=content.userPhotoURL>
+            </div>
+            <div class="full-width">
+                <span class="displayName">{{ content.name }} <span class="postedAt">{{ content.postedAt }}</span></span>
+                <div>
+                    <textarea id="content-{{ i }}" class="content full-width">{{ content.content }}</textarea>
+                </div>
+                <div>
+                    <ngx-emoji *ngIf=content.reactions matBadge="1" matBadgeSize="small"
+                        emoji="{{ content.reactions }}">
+                    </ngx-emoji>
+                </div>
+            </div>
+            <div class="reaction-bar">
+                <ngx-emoji emoji="smiley" (emojiClick)="addEmoji(i, 'smiley')"></ngx-emoji>
+                <ngx-emoji emoji="heart_eyes" (emojiClick)="addEmoji(i, 'heart_eyes')"></ngx-emoji>
+                <ngx-emoji emoji="thumbsup" (emojiClick)="addEmoji(i, 'thumbsup')"></ngx-emoji>
+                <ngx-emoji emoji="thumbsdown" (emojiClick)="addEmoji(i, 'thumbsdown')"></ngx-emoji>
+                <mat-icon matTooltip="Add comment" (click)="addComment(content)">reply</mat-icon>
+                <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Edit note" (click)="openDialog(content)">
+                    edit_note</mat-icon>
+                <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Delete">delete</mat-icon>
+            </div>
+        </div>
+    </div>
+    <app-message-field class="message-field-comment-position"></app-message-field>
+</div>
