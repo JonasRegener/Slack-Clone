@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation, AfterViewInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { Validators, Editor, Toolbar } from 'ngx-editor';
@@ -15,6 +15,7 @@ import { LoggedInUser } from '../models/loggedInUser.class';
   encapsulation: ViewEncapsulation.None,
 })
 export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
+
 
   html: any;
 
@@ -33,13 +34,12 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
 
   loggedInUser: any;
   content: any;
-
   currentChannel = 'testChannel2';
   entry: any;
 
   constructor(private firestore: AngularFirestore) {
     this.loggedInUser = new LoggedInUser('Alexander Baraev', 'assets/img/profileAlex.jpg')
-    console.log('show user:',this.loggedInUser);
+    console.log('show user:', this.loggedInUser);
   }
 
   ngOnInit(): void {
@@ -67,7 +67,7 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // Add to the Channel JSON
   addToChannel() {
-    const today = new Date().toLocaleString('en-GB', {timeZone: 'CET'});
+    const today = new Date().toLocaleString('en-GB', { timeZone: 'CET' });
     let contentInput = this.html;
     this.content = new ChannelEntryContent(contentInput, today);
     this.entry = new ChannelEntry(this.loggedInUser, this.content);

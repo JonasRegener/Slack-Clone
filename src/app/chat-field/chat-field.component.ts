@@ -40,6 +40,7 @@ export class ChatFieldComponent implements OnInit {
   openDialog(content: any) {
     const dialogRef = this.dialog.open(DialogEditMessageComponent);
     dialogRef.componentInstance.input = content;
+    dialogRef.componentInstance.threadView = this.threadView;
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('content:', content);
