@@ -36,4 +36,14 @@
     border-radius: 8px !important;
 }
 
+.action-btn {
+    position: absolute;
+    bottom: 32px;
+    right: 20px;
 
+    button {
+        &:first-child {
+            right: 170px;
+        }
+    }
+}

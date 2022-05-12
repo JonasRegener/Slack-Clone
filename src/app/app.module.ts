@@ -36,6 +36,7 @@ import { NgxEditorModule, schema } from 'ngx-editor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogEditMessageComponent } from './dialog-edit-message/dialog-edit-message.component';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { DialogEditMessageComponent } from './dialog-edit-message/dialog-edit-me
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatButtonModule,
     NgxEditorModule.forRoot({
       locals: {
         // menu

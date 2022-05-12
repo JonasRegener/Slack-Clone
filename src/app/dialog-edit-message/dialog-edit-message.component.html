@@ -1,6 +1,11 @@
 <form [formGroup]="form">
     <div class="message-field" [class.highlightBorder]="focused">
         <ngx-editor-menu [editor]="editor2" [toolbar]="toolbar"> </ngx-editor-menu>
-        <ngx-editor [editor]="editor2" formControlName="editorContent" placeholder="Write a message..." [ngModel]="input"> </ngx-editor>
+        <ngx-editor [editor]="editor2" formControlName="editorContent" placeholder="Write a message..." [(ngModel)]="content"> </ngx-editor>
+        <div mat-dialog-actions class="action-btn">
+            <button mat-button (click)="dialogRef.close()">Cancel</button>
+            <button mat-button cdkFocusInitial [disabled]="form.invalid" (click)="saveChanges()">Save changes</button>
+        </div>
     </div>
+    
 </form>

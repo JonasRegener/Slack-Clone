@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation, AfterViewInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { Validators, Editor, Toolbar } from 'ngx-editor';
+import { toHTML } from 'ngx-editor';
+import { toDoc } from 'ngx-editor';
 
 @Component({
   selector: 'app-message-field',
@@ -10,6 +13,9 @@ import { Validators, Editor, Toolbar } from 'ngx-editor';
 })
 export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
 
+  html: any;
+
+  // Editor settings
   focused = false;
   editor!: Editor;
   toolbar: Toolbar = [
@@ -22,6 +28,12 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
     editorContent: new FormControl('', Validators.required()),
   });
 
+  currentChannel = 'testChannel2';
+
+  constructor(private firestore: AngularFirestore) {
+
+  }
+
   ngOnInit(): void {
     this.editor = new Editor();
   }
@@ -30,6 +42,7 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
     this.editor.destroy();
   }
 
+  // Event Listener for focusing the message field
   ngAfterViewInit(): void {
     let editor: any = document.querySelector('.NgxEditor__Content');
     editor.addEventListener('focusin', this.setFocused.bind(this));
@@ -44,4 +57,13 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
     this.focused = false;
   }
 
+  // Add to the Channel JSON
+  addToChannel() {
+    // this.firestore
+    //   .collection('channels/' + this.currentChannel + '/threads')
+    //   .add()
+  }
+
 }
+
+

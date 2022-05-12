@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogEditMessageComponent } from '../dialog-edit-message/dialog-edit-message.component';
 import { MessageFieldComponent } from '../message-field/message-field.component';
@@ -13,58 +14,43 @@ export class ChatFieldComponent implements OnInit {
   disabled = true;
   loggedIn = 'Alexander Baraev';
 
-  channelContent = [
-    {
-      displayName: 'Alexander Baraev',
-      photoURL: '/assets/img/profileAlex.jpg',
-      posted: '22/05/10 07:33',
-      content: 'Hi this is a Text',
-      reactions: ''
-    },
-    {
-      displayName: 'Mario Neubacher',
-      photoURL: 'https://lh3.googleusercontent.com/a/AATXAJwtXDCa69ulgyD4-KaK8LufFXkWO7ELqNVi9LmsvA=s96-c',
-      posted: '22/05/10 08:33',
-      content: 'Hi this is a Text2',
-      reactions: ''
-    },
-    {
-      displayName: 'Jonas Regener',
-      photoURL: '',
-      posted: '22/05/10 09:33',
-      content: 'Hi this is a Text3',
-      reactions: ''
-    }
-  ]
+  currentChannel = 'testChannel2';
 
-  constructor(public dialog: MatDialog) { }
+  channelContent: any;
+
+  constructor(public dialog: MatDialog, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
+    // ------ FIRST OPTION ------
+    // this.firestore
+    //   .collection('channels')
+    //   .valueChanges({ idField: 'customIdName' })
+    //   .subscribe((result) => {
+    //     this.tests = result;
+    //     console.log(result);
+    // })
+
+    // ------ SECOND OPTION ------
+    this.firestore.collection('channels/' + this.currentChannel + '/threads')
+      // .doc('threads')
+      .valueChanges({ idField: 'customIdName' })
+      .subscribe((result) => {
+        this.channelContent = result;
+      })
   }
 
-  openDialog(content: string) {
+  // Open message field for editing
+  openDialog(content: any) {
     const dialogRef = this.dialog.open(DialogEditMessageComponent);
     dialogRef.componentInstance.input = content;
-    
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('content:', content);
     });
   }
 
+  // add reaction
   addEmoji(index: number, reaction: string) {
     this.channelContent[index].reactions = reaction;
   }
-
-  // edit(index: Number) {
-  //   let content: any = document.getElementById('content-' + index);
-  //   if(content.readOnly) {
-  //     content.readOnly = false;
-  //     content.focus();
-  //   } else {
-  //     content.readOnly = true;
-  //   }
-  // }
-
-
-
 }
