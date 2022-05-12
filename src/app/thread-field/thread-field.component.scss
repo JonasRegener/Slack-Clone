@@ -121,7 +121,19 @@ textarea {
 
 .content-field {
     width: 100%;
-    height: auto;
+    height: 400px;
     overflow-y: auto;
+}
+
+.thread-container {
+    position: relative;
+    height: 100vh;
+}
+
+.message-field-comment-position {
+    position: absolute;
+    bottom: 140px;
+    right: 24px;
+    left: 24px;
 }
 

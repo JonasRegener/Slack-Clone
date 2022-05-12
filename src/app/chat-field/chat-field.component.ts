@@ -19,17 +19,9 @@ export class ChatFieldComponent implements OnInit {
   constructor(public dialog: MatDialog, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
-    // ------ FIRST OPTION ------
-    // this.firestore
-    //   .collection('channels')
-    //   .valueChanges({ idField: 'customIdName' })
-    //   .subscribe((result) => {
-    //     this.tests = result;
-    //     console.log(result);
-    // })
-
-    // ------ SECOND OPTION ------
-    this.firestore.collection('channels/' + this.currentChannel + '/threads')
+    // ------ load all Channel entries from firebase ------
+    this.firestore
+      .collection('channels/' + this.currentChannel + '/threads')
       .valueChanges({ idField: 'customIdName' })
       .subscribe((result) => {
         this.channelContent = result;

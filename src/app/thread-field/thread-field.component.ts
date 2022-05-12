@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogEditMessageComponent } from '../dialog-edit-message/dialog-edit-message.component';
+import { DialogEditThreadCommentComponent } from '../dialog-edit-thread-comment/dialog-edit-thread-comment.component';
 
 @Component({
   selector: 'app-thread-field',
@@ -39,7 +40,7 @@ export class ThreadFieldComponent implements OnInit {
 
   // Open message field for editing
   openDialog(content: any) {
-    const dialogRef = this.dialog.open(DialogEditMessageComponent);
+    const dialogRef = this.dialog.open(DialogEditThreadCommentComponent);
     dialogRef.componentInstance.input = content;
 
     dialogRef.afterClosed().subscribe((result) => {

@@ -38,6 +38,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DialogEditMessageComponent } from './dialog-edit-message/dialog-edit-message.component';
 import {MatButtonModule} from '@angular/material/button';
 import { ThreadFieldComponent } from './thread-field/thread-field.component';
+import { DialogEditThreadCommentComponent } from './dialog-edit-thread-comment/dialog-edit-thread-comment.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ThreadFieldComponent } from './thread-field/thread-field.component';
     SidebarComponent,
     MessageFieldComponent,
     DialogEditMessageComponent,
-    ThreadFieldComponent
+    ThreadFieldComponent,
+    DialogEditThreadCommentComponent
   ],
   imports: [
     BrowserModule,
