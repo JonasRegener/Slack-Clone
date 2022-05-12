@@ -7,6 +7,7 @@ import { SignUpComponent } from './authentication/sign-up/sign-up.component';
 import { VerifyEmailComponent } from './authentication/verify-email/verify-email.component';
 import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { AuthGuard } from './authentication/guard/auth.guard';
+import { UserIconMenuComponent } from './user-icon-menu/user-icon-menu.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'loading-screen', component: LoadingScreenComponent }, // testing Path for loading-screen animation
+  { path: 'user-icon-menu', component: UserIconMenuComponent } // seperate component for avoiding merge conflicts 
 ];
 
 @NgModule({
