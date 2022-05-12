@@ -37,6 +37,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogEditMessageComponent } from './dialog-edit-message/dialog-edit-message.component';
 import {MatButtonModule} from '@angular/material/button';
+import { ThreadFieldComponent } from './thread-field/thread-field.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import {MatButtonModule} from '@angular/material/button';
     HeaderComponent,
     SidebarComponent,
     MessageFieldComponent,
-    DialogEditMessageComponent
+    DialogEditMessageComponent,
+    ThreadFieldComponent
   ],
   imports: [
     BrowserModule,

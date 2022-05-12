@@ -4,17 +4,18 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogEditMessageComponent } from '../dialog-edit-message/dialog-edit-message.component';
 
 @Component({
-  selector: 'app-chat-field',
-  templateUrl: './chat-field.component.html',
-  styleUrls: ['./chat-field.component.scss']
+  selector: 'app-thread-field',
+  templateUrl: './thread-field.component.html',
+  styleUrls: ['./thread-field.component.scss']
 })
-export class ChatFieldComponent implements OnInit {
+export class ThreadFieldComponent implements OnInit {
 
+ 
   disabled = true;
   loggedIn = 'Alexander Baraev';
   currentChannel = 'testChannel2';
   channelContent: any;
-  threadView = true;
+  threadView = false;
 
   constructor(public dialog: MatDialog, private firestore: AngularFirestore) { }
 
@@ -55,3 +56,4 @@ export class ChatFieldComponent implements OnInit {
 
   }
 }
+

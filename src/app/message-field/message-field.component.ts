@@ -4,6 +4,9 @@ import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { Validators, Editor, Toolbar } from 'ngx-editor';
 import { toHTML } from 'ngx-editor';
 import { toDoc } from 'ngx-editor';
+import { ChannelEntry } from '../models/channelEntry.class';
+import { ChannelEntryContent } from '../models/channelEntryContent.class';
+import { LoggedInUser } from '../models/loggedInUser.class';
 
 @Component({
   selector: 'app-message-field',
@@ -28,10 +31,15 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
     editorContent: new FormControl('', Validators.required()),
   });
 
+  loggedInUser: any;
+  content: any;
+
   currentChannel = 'testChannel2';
+  entry: any;
 
   constructor(private firestore: AngularFirestore) {
-
+    this.loggedInUser = new LoggedInUser('Alexander Baraev', 'assets/img/profileAlex.jpg')
+    console.log('show user:',this.loggedInUser);
   }
 
   ngOnInit(): void {
@@ -59,9 +67,16 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // Add to the Channel JSON
   addToChannel() {
-    // this.firestore
-    //   .collection('channels/' + this.currentChannel + '/threads')
-    //   .add()
+    const today = new Date().toLocaleString('en-GB', {timeZone: 'CET'});
+    let contentInput = this.html;
+    this.content = new ChannelEntryContent(contentInput, today);
+    this.entry = new ChannelEntry(this.loggedInUser, this.content);
+    this.firestore
+      .collection('channels/' + this.currentChannel + '/threads')
+      .add(this.entry.toJSON())
+      .then(() => {
+        console.log();
+      })
   }
 
 }
