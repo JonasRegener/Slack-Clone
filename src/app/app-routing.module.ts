@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'loading-screen', component: LoadingScreenComponent }, // testing Path for loading-screen animation
-  { path: 'chat-field', component: ChatFieldComponent },
+  { path: 'chat-field', component: ChatFieldComponent }, /* && HeaderComponent && SidebarComponent */
   { path: 'header', component: HeaderComponent },
   { path: 'sidebar', component: SidebarComponent }
 ];

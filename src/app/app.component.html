@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<app-forgot-password *ngIf="router.url == '/forgot-password'"></app-forgot-password>
+<app-sign-in *ngIf="router.url == '/sign-in'"></app-sign-in> 
+<app-sign-up *ngIf="router.url == '/sign-up'"></app-sign-up>
+<app-verify-email *ngIf="router.url == '/verify-email'"></app-verify-email>
+
+<div *ngIf="router.url !== '/forgot-password' || '/sign-in' || '/sign-up' || '/verify-email'">
+    <app-header></app-header>
+    <div style="display: flex">
+        <app-sidebar></app-sidebar>
+        <router-outlet></router-outlet>
+    </div>
+</div>
