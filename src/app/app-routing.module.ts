@@ -12,12 +12,12 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
+/*   { path: '', redirectTo: '/sign-in', pathMatch: 'full' }, */
   { path: 'sign-in', component: SignInComponent },
-  { path: 'register-user', component: SignUpComponent },
+  { path: 'sign-up', component: SignUpComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'verify-email-address', component: VerifyEmailComponent },
+  { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'loading-screen', component: LoadingScreenComponent }, // testing Path for loading-screen animation
   { path: 'chat-field', component: ChatFieldComponent }, /* && HeaderComponent && SidebarComponent */
   { path: 'header', component: HeaderComponent },

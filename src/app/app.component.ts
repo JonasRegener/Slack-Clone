@@ -13,4 +13,8 @@ export class AppComponent {
 
   constructor(public router: Router) { }
 
+  isLoggedIn() {
+    return this.router.url === '/chat-field';
+  }
+
 }

@@ -3,7 +3,7 @@
 <app-sign-up *ngIf="router.url == '/sign-up'"></app-sign-up>
 <app-verify-email *ngIf="router.url == '/verify-email'"></app-verify-email>
 
-<div *ngIf="router.url !== '/forgot-password' || '/sign-in' || '/sign-up' || '/verify-email'">
+<div *ngIf="isLoggedIn()"> <!--  *ngIf="router.url !== '/forgot-password' || '/sign-in' || '/sign-up' || '/verify-email'" -->
     <app-header></app-header>
     <div style="display: flex">
         <app-sidebar></app-sidebar>
