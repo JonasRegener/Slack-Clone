@@ -9,6 +9,12 @@ header {
     padding-left: 24px;
 }
 
+.ng-star-inserted {
+    width: 75%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .content-entry {
     width: 100%;
     height: auto;
@@ -138,8 +144,8 @@ textarea {
 }
 
 .screen-field {
-    height: 100vh;
-    width: 100vw;
+    height: 90vh !important;
+/*     width: 100vw; */
     box-sizing: border-box;
     overflow-x:hidden;
 }

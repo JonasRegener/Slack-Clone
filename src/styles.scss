@@ -14,6 +14,8 @@ body {
 
 * {
     --purple: #3F103F;
+    --darkPurple: #2B092A;
+    --lightPurple: #3E103F;
     --darkGrey: rgb(51, 51, 51);
     --orange: #fbb03c;
     font-size: 16px;
@@ -39,8 +41,13 @@ span {
     margin: 5px !important;
 }
 
+.displayTable {
+    height: 100vh;
+    background-color: var(--darkPurple);
+}
+
 .backgroundDesign {
-    background-color: #8F60BB;
+    background-color: var(--lightPurple);
     height: 1000px;
     width: 1000px;
     position: fixed;

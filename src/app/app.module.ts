@@ -39,6 +39,7 @@ import { DialogEditMessageComponent } from './dialog-edit-message/dialog-edit-me
 import {MatButtonModule} from '@angular/material/button';
 import { ThreadFieldComponent } from './thread-field/thread-field.component';
 import { DialogEditThreadCommentComponent } from './dialog-edit-thread-comment/dialog-edit-thread-comment.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { DialogEditThreadCommentComponent } from './dialog-edit-thread-comment/d
     MatListModule,
     PickerModule,
     EmojiModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
