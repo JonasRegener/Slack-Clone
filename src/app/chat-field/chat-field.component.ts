@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogEditMessageComponent } from '../dialog-edit-message/dialog-edit-message.component';
 import { GlobalVariablesService } from '../global-variables.service';
+import { Observable, Subject } from 'rxjs';
 @Component({
   selector: 'app-chat-field',
   templateUrl: './chat-field.component.html',
@@ -10,7 +11,7 @@ import { GlobalVariablesService } from '../global-variables.service';
 })
 export class ChatFieldComponent implements OnInit, OnChanges {
 
-  threadView!: boolean;
+  threadView = false;
   disabled = true;
   loggedIn = 'Alexander Baraev';
   currentChannel = 'testChannel2';
@@ -30,7 +31,10 @@ export class ChatFieldComponent implements OnInit, OnChanges {
       .subscribe((result) => {
         this.channelContent = result;
       })
-    this.threadView = this.globalV.test;
+    
+      this.globalV.threadView.subscribe(item => {
+        this.threadView = item;
+      })
 
 
   }
@@ -53,10 +57,8 @@ export class ChatFieldComponent implements OnInit, OnChanges {
     this.channelContent[index].reactions = reaction;
   }
 
-  addComment(content: any) {
-    this.globalV.test = true;
-    this.threadView = this.globalV.test;
-    console.log(this.globalV.test);
-
+  addComment(id: any) {
+    this.globalV.setThread(id);
+    this.globalV.setThreadView(true);
   }
 }

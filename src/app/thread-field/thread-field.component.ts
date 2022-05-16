@@ -15,7 +15,8 @@ export class ThreadFieldComponent implements OnInit {
   disabled = true;
   loggedIn = 'Alexander Baraev';
   currentChannel = 'testChannel2';
-  channelContent: any;
+  threadContent: any;
+  threadSelected: string = '';
   threadView!: boolean;
 
   constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService) { }
@@ -30,15 +31,27 @@ export class ThreadFieldComponent implements OnInit {
     //     console.log(result);
     // })
 
-    this.threadView = this.globalV.test;
+    // this.threadView = this.globalV.getThreadView();
+    // this.threadSelected = this.globalV.getThread();
+    // console.log('selected:',this.globalV.getThread());
 
 
-    // ------ SECOND OPTION ------
-    this.firestore.collection('channels/' + this.currentChannel + '/threads')
+    this.globalV.threadView.subscribe(item => {
+      this.threadView = item;
+    })
+
+    this.globalV.threadSelect.subscribe(item => {
+      this.threadSelected = item;
+      this.firestore.collection('channels/' + this.currentChannel + '/threads/')
+      .doc(item)
       .valueChanges({ idField: 'customIdName' })
       .subscribe((result) => {
-        this.channelContent = result;
+        this.threadContent = result;
+        console.log('selected: ',this.threadSelected);
+        
       })
+    });
+    // })
   }
 
   // Open message field for editing
@@ -53,18 +66,23 @@ export class ThreadFieldComponent implements OnInit {
 
   // add reaction
   addEmoji(index: number, reaction: string) {
-    this.channelContent[index].reactions = reaction;
+    this.threadContent[index].reactions = reaction;
   }
 
   addComment(content: any) {
 
   }
 
+  getCommentlenght() {
+    if(this.threadContent.comments.length < 2){ return 'Antwort'}
+    else { return 'Antworten'};
+  }
+
   closeComments() {
-    this.globalV.test = false;
-    this.threadView = this.globalV.test;
-    console.log('active:',this.globalV.test);
-    
+    // this.globalV.setThreadView(false);
+    // this.threadView = this.globalV.getThreadView();
+    console.log('active:',this.threadView);
+
   }
 }
 

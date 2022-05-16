@@ -3,13 +3,47 @@
         [Thread]
         <button mat-button (click)="closeComments()"><mat-icon>close</mat-icon></button>
     </header>
-    <div class="content-field">
-        <div class="content-entry" *ngFor="let content of channelContent; let i = index">
+    <div class="content-field-first-entry"  *ngIf="threadContent">
+        <div class="content-entry">
+            <div>
+                <img [src]=threadContent.userPhotoURL>
+            </div>
+            <div class="full-width">
+                <span class="displayName">{{ threadContent.userName }} <span class="postedAt">{{ threadContent.postedAt }}</span></span>
+                <div>
+                    <textarea id="content-{{ 0 }}" class="content full-width">{{ threadContent.content }}</textarea>
+                </div>
+                <div>
+                    <ngx-emoji *ngIf=threadContent.reactions matBadge="1" matBadgeSize="small"
+                        emoji="{{ threadContent.reactions }}">
+                    </ngx-emoji>
+                </div>
+            </div>
+            <div class="reaction-bar">
+                <ngx-emoji emoji="smiley" (emojiClick)="addEmoji(0, 'smiley')"></ngx-emoji>
+                <ngx-emoji emoji="heart_eyes" (emojiClick)="addEmoji(0, 'heart_eyes')"></ngx-emoji>
+                <ngx-emoji emoji="thumbsup" (emojiClick)="addEmoji(0, 'thumbsup')"></ngx-emoji>
+                <ngx-emoji emoji="thumbsdown" (emojiClick)="addEmoji(0, 'thumbsdown')"></ngx-emoji>
+                <mat-icon matTooltip="Add comment" (click)="addComment(threadContent)">reply</mat-icon>
+                <mat-icon *ngIf="threadContent.userName == loggedIn" matTooltip="Edit note" (click)="openDialog(threadContent)">
+                    edit_note</mat-icon>
+                <mat-icon *ngIf="threadContent.userName == loggedIn" matTooltip="Delete">delete</mat-icon>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-field" *ngIf="threadContent">
+        <div *ngIf="threadContent.comments" class="number-of-comments">
+            <div>{{ threadContent.comments.length }} {{ getCommentlenght() }}</div>
+            <div><hr></div>
+        </div>
+        <div class="content-entry" *ngFor="let content of threadContent.comments; let i = index">
             <div>
                 <img [src]=content.userPhotoURL>
             </div>
             <div class="full-width">
-                <span class="displayName">{{ content.name }} <span class="postedAt">{{ content.postedAt }}</span></span>
+                <span class="displayName">{{ content.userName }} <span class="postedAt">{{ content.postedAt
+                        }}</span></span>
                 <div>
                     <textarea id="content-{{ i }}" class="content full-width">{{ content.content }}</textarea>
                 </div>
@@ -24,7 +58,7 @@
                 <ngx-emoji emoji="heart_eyes" (emojiClick)="addEmoji(i, 'heart_eyes')"></ngx-emoji>
                 <ngx-emoji emoji="thumbsup" (emojiClick)="addEmoji(i, 'thumbsup')"></ngx-emoji>
                 <ngx-emoji emoji="thumbsdown" (emojiClick)="addEmoji(i, 'thumbsdown')"></ngx-emoji>
-                <mat-icon matTooltip="Add comment" (click)="addComment(content)">reply</mat-icon>
+                <mat-icon matTooltip="Add comment" (click)="addComment(content.customIdName)">reply</mat-icon>
                 <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Edit note" (click)="openDialog(content)">
                     edit_note</mat-icon>
                 <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Delete">delete</mat-icon>

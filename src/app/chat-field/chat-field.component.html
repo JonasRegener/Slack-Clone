@@ -7,7 +7,7 @@
                     <img [src]=content.userPhotoURL>
                 </div>
                 <div class="full-width">
-                    <span class="displayName">{{ content.name }} <span class="postedAt">{{ content.postedAt
+                    <span class="displayName">{{ content.userName }} <span class="postedAt">{{ content.postedAt
                             }}</span></span>
                     <div>
                         <textarea id="content-{{ i }}" class="content full-width">{{ content.content }}</textarea>
@@ -23,7 +23,7 @@
                     <ngx-emoji emoji="heart_eyes" (emojiClick)="addEmoji(i, 'heart_eyes')"></ngx-emoji>
                     <ngx-emoji emoji="thumbsup" (emojiClick)="addEmoji(i, 'thumbsup')"></ngx-emoji>
                     <ngx-emoji emoji="thumbsdown" (emojiClick)="addEmoji(i, 'thumbsdown')"></ngx-emoji>
-                    <mat-icon matTooltip="Add comment" (click)="addComment(content)">reply</mat-icon>
+                    <mat-icon matTooltip="Add comment" (click)="addComment(content.customIdName)">reply</mat-icon>
                     <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Edit note" (click)="openDialog(content)">
                         edit_note</mat-icon>
                     <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Delete">delete</mat-icon>
