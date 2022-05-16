@@ -10,7 +10,9 @@
                     <span class="displayName">{{ content.userName }} <span class="postedAt">{{ content.postedAt
                             }}</span></span>
                     <div>
-                        <textarea id="content-{{ i }}" class="content full-width">{{ content.content }}</textarea>
+                        <div id="content-{{ i }}" class="content full-width">
+                            {{ extractContent(content.content) }}
+                        </div>
                     </div>
                     <div>
                         <ngx-emoji *ngIf=content.reactions matBadge="1" matBadgeSize="small"

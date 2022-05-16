@@ -35,11 +35,7 @@ export class ChatFieldComponent implements OnInit, OnChanges {
     this.globalV.threadView.subscribe(item => {
       this.threadView = item;
     })
-
-
   }
-
-
 
   // Open message field for editing
   openDialog(content: any) {
@@ -62,4 +58,17 @@ export class ChatFieldComponent implements OnInit, OnChanges {
     this.globalV.setThreadView(true);
     this.globalV.setObject(obj);
   }
+
+  extractContent(string: string) {
+    let span = document.createElement('div');
+    span.innerHTML = string;
+    return span;
+  };
+
+  stringToHTML(string: string) {
+    let parser = new DOMParser();
+    let doc = parser.parseFromString('string', 'text/html');
+    return doc.createElement;
+    
+  };
 }
