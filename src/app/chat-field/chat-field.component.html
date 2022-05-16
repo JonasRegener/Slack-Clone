@@ -10,8 +10,7 @@
                     <span class="displayName">{{ content.userName }} <span class="postedAt">{{ content.postedAt
                             }}</span></span>
                     <div>
-                        <div id="content-{{ i }}" class="content full-width">
-                            {{ extractContent(content.content) }}
+                        <div id="content-{{ i }}" class="content full-width" [innerHTML]="content.content">
                         </div>
                     </div>
                     <div>
@@ -25,7 +24,8 @@
                     <ngx-emoji emoji="heart_eyes" (emojiClick)="addEmoji(i, 'heart_eyes')"></ngx-emoji>
                     <ngx-emoji emoji="thumbsup" (emojiClick)="addEmoji(i, 'thumbsup')"></ngx-emoji>
                     <ngx-emoji emoji="thumbsdown" (emojiClick)="addEmoji(i, 'thumbsdown')"></ngx-emoji>
-                    <mat-icon matTooltip="Add comment" (click)="addComment(content.customIdName, content)">reply</mat-icon>
+                    <mat-icon matTooltip="Add comment" (click)="addComment(content.customIdName, content)">reply
+                    </mat-icon>
                     <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Edit note" (click)="openDialog(content)">
                         edit_note</mat-icon>
                     <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Delete">delete</mat-icon>

@@ -67,7 +67,8 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
   // Add to the Channel JSON
   addToChannel() {
     const today = new Date().toLocaleString('en-GB', { timeZone: 'CET' });
-    let contentInput = this.html;
+    let contentInput = this.form.controls['editorContent'].value;
+    
     this.content = new ChannelEntryContent(contentInput, today);
     this.entry = new ChannelEntry(this.loggedInUser, this.content);
     this.firestore
@@ -78,8 +79,6 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
         this.form.reset();
       })
   }
-
-
 
 }
 

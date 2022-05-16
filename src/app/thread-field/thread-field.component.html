@@ -11,7 +11,7 @@
             <div class="full-width">
                 <span class="displayName">{{ threadContent.userName }} <span class="postedAt">{{ threadContent.postedAt }}</span></span>
                 <div>
-                    <textarea id="content-{{ 0 }}" class="content full-width">{{ threadContent.content }}</textarea>
+                    <div id="content-{{ 0 }}" class="content full-width" [innerHTML]="threadContent.content"></div>
                 </div>
                 <div>
                     <ngx-emoji *ngIf=threadContent.reactions matBadge="1" matBadgeSize="small"
@@ -34,7 +34,7 @@
 
     <div class="content-field" *ngIf="threadContent">
         <div *ngIf="threadContent.comments.length > 0" class="number-of-comments">
-            <div>{{ threadContent.comments.length }} {{ getCommentlenght() }}</div>
+            <div>{{ threadContent.comments.length }} {{ getCommentlength() }}</div>
             <div><hr></div>
         </div>
         <div class="content-entry" *ngFor="let content of threadContent.comments; let i = index">
@@ -45,7 +45,7 @@
                 <span class="displayName">{{ content.userName }} <span class="postedAt">{{ content.postedAt
                         }}</span></span>
                 <div>
-                    <textarea id="content-{{ i }}" class="content full-width">{{ content.content }}</textarea>
+                    <div id="content-{{ i }}" class="content full-width" [innerHTML]="content.content"></div>
                 </div>
                 <div>
                     <ngx-emoji *ngIf=content.reactions matBadge="1" matBadgeSize="small"

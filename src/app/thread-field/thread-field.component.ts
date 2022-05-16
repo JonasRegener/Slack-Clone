@@ -18,6 +18,8 @@ export class ThreadFieldComponent implements OnInit {
   threadContent: any;
   threadSelected: string = '';
   threadView!: boolean;
+  textHTML: string = '';
+
 
   constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService) { }
 
@@ -73,15 +75,14 @@ export class ThreadFieldComponent implements OnInit {
 
   }
 
-  getCommentlenght() {
+  getCommentlength() {
     if(this.threadContent.comments.length < 2){ return 'Antwort'}
     else { return 'Antworten'};
   }
 
   closeComments() {
     this.globalV.setThreadView(false);
-    console.log('active:',this.threadView);
-
   }
+
 }
 

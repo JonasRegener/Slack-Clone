@@ -59,16 +59,6 @@ export class ChatFieldComponent implements OnInit, OnChanges {
     this.globalV.setObject(obj);
   }
 
-  extractContent(string: string) {
-    let span = document.createElement('div');
-    span.innerHTML = string;
-    return span;
-  };
 
-  stringToHTML(string: string) {
-    let parser = new DOMParser();
-    let doc = parser.parseFromString('string', 'text/html');
-    return doc.createElement;
-    
-  };
+
 }
