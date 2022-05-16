@@ -26,7 +26,7 @@
                     <ngx-emoji emoji="thumbsdown" (emojiClick)="addEmoji(i, 'thumbsdown')"></ngx-emoji>
                     <mat-icon matTooltip="Add comment" (click)="addComment(content.customIdName, content)">reply
                     </mat-icon>
-                    <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Edit note" (click)="openDialog(content)">
+                    <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Edit note" (click)="openEditor(content)">
                         edit_note</mat-icon>
                     <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Delete">delete</mat-icon>
                 </div>

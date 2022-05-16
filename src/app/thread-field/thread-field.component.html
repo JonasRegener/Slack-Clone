@@ -24,8 +24,8 @@
                 <ngx-emoji emoji="heart_eyes" (emojiClick)="addEmoji(0, 'heart_eyes')"></ngx-emoji>
                 <ngx-emoji emoji="thumbsup" (emojiClick)="addEmoji(0, 'thumbsup')"></ngx-emoji>
                 <ngx-emoji emoji="thumbsdown" (emojiClick)="addEmoji(0, 'thumbsdown')"></ngx-emoji>
-                <mat-icon matTooltip="Add comment" (click)="addComment(threadContent)">reply</mat-icon>
-                <mat-icon *ngIf="threadContent.userName == loggedIn" matTooltip="Edit note" (click)="openDialog(threadContent)">
+                <!-- <mat-icon matTooltip="Add comment" (click)="addComment(threadContent)">reply</mat-icon> -->
+                <mat-icon *ngIf="threadContent.userName == loggedIn" matTooltip="Edit note" (click)="openEditor(threadContent, 'topic', threadContent, 0)">
                     edit_note</mat-icon>
                 <mat-icon *ngIf="threadContent.userName == loggedIn" matTooltip="Delete">delete</mat-icon>
             </div>
@@ -58,8 +58,8 @@
                 <ngx-emoji emoji="heart_eyes" (emojiClick)="addEmoji(i, 'heart_eyes')"></ngx-emoji>
                 <ngx-emoji emoji="thumbsup" (emojiClick)="addEmoji(i, 'thumbsup')"></ngx-emoji>
                 <ngx-emoji emoji="thumbsdown" (emojiClick)="addEmoji(i, 'thumbsdown')"></ngx-emoji>
-                <mat-icon matTooltip="Add comment" (click)="addComment(content.customIdName)">reply</mat-icon>
-                <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Edit note" (click)="openDialog(content)">
+                <!-- <mat-icon matTooltip="Add comment" (click)="addComment(content.customIdName)">reply</mat-icon> -->
+                <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Edit note" (click)="openEditor(content, 'comment', threadContent, i)">
                     edit_note</mat-icon>
                 <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Delete">delete</mat-icon>
             </div>

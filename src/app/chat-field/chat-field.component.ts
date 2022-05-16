@@ -38,7 +38,7 @@ export class ChatFieldComponent implements OnInit, OnChanges {
   }
 
   // Open message field for editing
-  openDialog(content: any) {
+  openEditor(content: any) {
     const dialogRef = this.dialog.open(DialogEditMessageComponent);
     dialogRef.componentInstance.input = content;
     // dialogRef.componentInstance.threadView = this.threadView;

@@ -1,7 +1,7 @@
 <form [formGroup]="form">
     <div class="message-field" [class.highlightBorder]="focused">
         <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
-        <ngx-editor [editor]="editor" formControlName="editorContent" placeholder="Write a message..." [(ngModel)]="html"> </ngx-editor>
+        <ngx-editor [editor]="editor" formControlName="editorContent" placeholder="Write a message..." [(ngModel)]="html" #editorF> </ngx-editor>
         <button mat-button [disabled]="form.invalid" (click)="addToThread()">
             <mat-icon matTooltip="Send">send</mat-icon>
         </button>  

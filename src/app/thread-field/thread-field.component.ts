@@ -57,9 +57,13 @@ export class ThreadFieldComponent implements OnInit {
   }
 
   // Open message field for editing
-  openDialog(content: any) {
+  openEditor(content: any, location: string, thread: any, index: number) {
     const dialogRef = this.dialog.open(DialogEditThreadCommentComponent);
     dialogRef.componentInstance.input = content;
+    dialogRef.componentInstance.editLocation = location;
+    dialogRef.componentInstance.thread = thread;
+    dialogRef.componentInstance.index = index;
+
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('content:', content);

@@ -34,11 +34,15 @@ export class DialogEditThreadCommentComponent implements OnInit {
   content: string = '';
   input: any;
   threadView = true;
+  editLocation: string = '';
+  thread!: any;
+  index!: number;
+
 
   ngOnInit(): void {
     this.editor3 = new Editor();
     this.content = this.input.content;
-    if(this.threadView) {
+    if (this.threadView) {
       let element: any = document.querySelector('.cdk-overlay-container');
       element.style = 'width: 30%; left: unset; right: 0;'
     }
@@ -50,14 +54,37 @@ export class DialogEditThreadCommentComponent implements OnInit {
 
   saveChanges() {
     let changes: any = document.querySelectorAll('.NgxEditor__Content > p');
-    this.input.content = changes[2].innerHTML;
-    this.firestore
-      .collection('channels/' + this.currentChannel + '/threads')
-      .doc(this.input.customIdName)
-      .update(JSON.parse(JSON.stringify(this.input)))
-      .then(() => {
-        console.log('after update',this.input.content);
-        this.dialogRef.close();
-      })
+
+    if (this.editLocation == 'topic') {
+      this.input.content = changes[2].innerHTML;
+
+      this.firestore
+        .collection('channels/' + this.currentChannel + '/threads')
+        .doc(this.input.customIdName)
+        .update(JSON.parse(JSON.stringify(this.input)))
+        .then(() => {
+          console.log('after update', this.input.content);
+          this.dialogRef.close();
+        })
+    } else if (this.editLocation == 'comment') {
+      this.thread.comments[this.index].content = changes[2].innerHTML;
+      console.log(this.thread.customIdName);
+
+      this.firestore
+        .collection('channels/' + this.currentChannel + '/threads')
+        .doc(this.thread.customIdName)
+        .update(JSON.parse(JSON.stringify(this.thread)))
+        .then(() => {
+          console.log('after update', this.thread.content);
+          this.dialogRef.close();
+        })
+    }
+
+
+
+
+
   }
+
+
 }
