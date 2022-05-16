@@ -16,6 +16,9 @@ export class GlobalVariablesService {
   public _channelSelect: Subject<string> = new Subject();
   channelSelect: Observable<string> = this._channelSelect.asObservable();
 
+  public _threadObject: Subject<Object> = new Subject();
+  threadObject: Observable<Object> = this._threadObject.asObservable();
+
   constructor() { }
 
   setThreadView(boolValue: boolean) {
@@ -29,5 +32,10 @@ export class GlobalVariablesService {
   setChannel(string: string) {
     this._channelSelect.next(string);
   }
+
+  setObject(obj: any) {
+    this._threadObject.next(obj);
+  }
+
 
 }

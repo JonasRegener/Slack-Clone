@@ -20,7 +20,7 @@ export class ChatFieldComponent implements OnInit, OnChanges {
   constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService) { }
 
   ngOnChanges() {
-    console.log('changes:',this.threadView);
+    console.log('changes:', this.threadView);
   }
 
   ngOnInit(): void {
@@ -31,10 +31,10 @@ export class ChatFieldComponent implements OnInit, OnChanges {
       .subscribe((result) => {
         this.channelContent = result;
       })
-    
-      this.globalV.threadView.subscribe(item => {
-        this.threadView = item;
-      })
+
+    this.globalV.threadView.subscribe(item => {
+      this.threadView = item;
+    })
 
 
   }
@@ -57,8 +57,9 @@ export class ChatFieldComponent implements OnInit, OnChanges {
     this.channelContent[index].reactions = reaction;
   }
 
-  addComment(id: any) {
+  addComment(id: any, obj: any) {
     this.globalV.setThread(id);
     this.globalV.setThreadView(true);
+    this.globalV.setObject(obj);
   }
 }

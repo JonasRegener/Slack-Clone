@@ -131,6 +131,12 @@ textarea {
     height: auto;
 }
 
+.content-field {
+    height: 300px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
 .thread-container {
     position: relative;
     height: 100vh;

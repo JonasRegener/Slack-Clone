@@ -40,6 +40,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { ThreadFieldComponent } from './thread-field/thread-field.component';
 import { DialogEditThreadCommentComponent } from './dialog-edit-thread-comment/dialog-edit-thread-comment.component';
 import { RouterModule } from '@angular/router';
+import { MessageFieldThreadComponent } from './message-field-thread/message-field-thread.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { RouterModule } from '@angular/router';
     MessageFieldComponent,
     DialogEditMessageComponent,
     ThreadFieldComponent,
-    DialogEditThreadCommentComponent
+    DialogEditThreadCommentComponent,
+    MessageFieldThreadComponent
   ],
   imports: [
     BrowserModule,

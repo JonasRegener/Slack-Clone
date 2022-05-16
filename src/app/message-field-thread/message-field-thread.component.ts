@@ -4,16 +4,16 @@ import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { Validators, Editor, Toolbar } from 'ngx-editor';
 import { toHTML } from 'ngx-editor';
 import { toDoc } from 'ngx-editor';
+import { GlobalVariablesService } from '../global-variables.service';
 import { ChannelEntry } from '../models/channelEntry.class';
 import { ChannelEntryContent } from '../models/channelEntryContent.class';
 import { LoggedInUser } from '../models/loggedInUser.class';
-
 @Component({
-  selector: 'app-message-field',
-  templateUrl: './message-field.component.html',
-  styleUrls: ['./message-field.component.scss'],
+  selector: 'app-message-field-thread',
+  templateUrl: './message-field-thread.component.html',
+  styleUrls: ['./message-field-thread.component.scss']
 })
-export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
+export class MessageFieldThreadComponent implements OnInit {
 
 
   html: any;
@@ -35,14 +35,24 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
   content: any;
   currentChannel = 'testChannel2';
   entry: any;
+  threadSelected: string = '';
+  threadObject: any;
 
-  constructor(private firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService) {
     this.loggedInUser = new LoggedInUser('Alexander Baraev', 'assets/img/profileAlex.jpg')
-    console.log('show user:', this.loggedInUser);
   }
 
   ngOnInit(): void {
     this.editor = new Editor();
+
+    this.globalV.threadSelect.subscribe(item => {
+      this.threadSelected = item;
+    });
+
+
+    this.globalV.threadObject.subscribe(item => {
+      this.threadObject = item;            
+    });
   }
 
   ngOnDestroy(): void {
@@ -65,20 +75,24 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   // Add to the Channel JSON
-  addToChannel() {
+  addToThread() {
     const today = new Date().toLocaleString('en-GB', { timeZone: 'CET' });
     let contentInput = this.html;
     this.content = new ChannelEntryContent(contentInput, today);
     this.entry = new ChannelEntry(this.loggedInUser, this.content);
+
+    this.threadObject.comments.push(this.entry);
+
+
     this.firestore
-      .collection('channels/' + this.currentChannel + '/threads')
-      .add(this.entry.toJSON())
+      .collection('channels/' + this.currentChannel + '/threads/')
+      .doc(this.threadSelected)
+      .update(JSON.parse(JSON.stringify(this.threadObject)))
       .then(() => {
-        console.log();
         this.form.reset();
       })
+      
   }
 
 }
-
 

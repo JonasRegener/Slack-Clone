@@ -79,8 +79,7 @@ export class ThreadFieldComponent implements OnInit {
   }
 
   closeComments() {
-    // this.globalV.setThreadView(false);
-    // this.threadView = this.globalV.getThreadView();
+    this.globalV.setThreadView(false);
     console.log('active:',this.threadView);
 
   }

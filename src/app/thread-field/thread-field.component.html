@@ -33,7 +33,7 @@
     </div>
 
     <div class="content-field" *ngIf="threadContent">
-        <div *ngIf="threadContent.comments" class="number-of-comments">
+        <div *ngIf="threadContent.comments.length > 0" class="number-of-comments">
             <div>{{ threadContent.comments.length }} {{ getCommentlenght() }}</div>
             <div><hr></div>
         </div>
@@ -65,5 +65,5 @@
             </div>
         </div>
     </div>
-    <app-message-field class="message-field-comment-position"></app-message-field>
+    <app-message-field-thread class="message-field-comment-position"></app-message-field-thread>
 </div>
