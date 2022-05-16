@@ -1,5 +1,8 @@
 <div class="thread-container">
-    <header>[Thread]</header>
+    <header>
+        [Thread]
+        <button mat-button (click)="closeComments()"><mat-icon>close</mat-icon></button>
+    </header>
     <div class="content-field">
         <div class="content-entry" *ngFor="let content of channelContent; let i = index">
             <div>

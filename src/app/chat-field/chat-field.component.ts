@@ -1,22 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogEditMessageComponent } from '../dialog-edit-message/dialog-edit-message.component';
-
+import { GlobalVariablesService } from '../global-variables.service';
 @Component({
   selector: 'app-chat-field',
   templateUrl: './chat-field.component.html',
   styleUrls: ['./chat-field.component.scss']
 })
-export class ChatFieldComponent implements OnInit {
+export class ChatFieldComponent implements OnInit, OnChanges {
 
+  threadView!: boolean;
   disabled = true;
   loggedIn = 'Alexander Baraev';
   currentChannel = 'testChannel2';
   channelContent: any;
-  threadView = true;
 
-  constructor(public dialog: MatDialog, private firestore: AngularFirestore) { }
+  constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService) { }
+
+  ngOnChanges() {
+    console.log('changes:',this.threadView);
+  }
 
   ngOnInit(): void {
     // ------ load all Channel entries from firebase ------
@@ -26,13 +30,18 @@ export class ChatFieldComponent implements OnInit {
       .subscribe((result) => {
         this.channelContent = result;
       })
+    this.threadView = this.globalV.test;
+
+
   }
+
+
 
   // Open message field for editing
   openDialog(content: any) {
     const dialogRef = this.dialog.open(DialogEditMessageComponent);
     dialogRef.componentInstance.input = content;
-    dialogRef.componentInstance.threadView = this.threadView;
+    // dialogRef.componentInstance.threadView = this.threadView;
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('content:', content);
@@ -45,6 +54,9 @@ export class ChatFieldComponent implements OnInit {
   }
 
   addComment(content: any) {
+    this.globalV.test = true;
+    this.threadView = this.globalV.test;
+    console.log(this.globalV.test);
 
   }
 }

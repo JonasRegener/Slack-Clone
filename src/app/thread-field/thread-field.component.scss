@@ -7,6 +7,13 @@ header {
     display: flex;
     align-items: center;
     padding-left: 24px;
+    position: relative;
+
+    button {
+        position: absolute;
+        top: 4.5px;
+        right: 8px;
+    }
 }
 
 .content-entry {
