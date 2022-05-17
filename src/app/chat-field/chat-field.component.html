@@ -2,7 +2,7 @@
 
 <div class="screen-field row">
     <div class="channel-field" [class.show-thread-field]="threadView">
-        <header *ngIf="!loading">[Channel]</header>
+        <header *ngIf="!loading">{{ currentChannel }}</header>
         <div class="content-field" *ngIf="channelContent && !loading">
             <div class="content-entry" *ngFor="let content of channelContent; let i = index">
                 <div>
