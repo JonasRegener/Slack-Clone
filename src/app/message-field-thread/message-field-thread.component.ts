@@ -46,11 +46,11 @@ export class MessageFieldThreadComponent implements OnInit {
     this.editor = new Editor();
 
     
-    this.globalV.threadObject.subscribe(item => {
+    this.globalV.getObject().subscribe(item => {
       this.threadObject = item;
     });
 
-    this.globalV.threadSelect.subscribe(item => {
+    this.globalV.getThread().subscribe(item => {
       this.threadSelected = item;
     });
 

@@ -12,11 +12,11 @@ import { DialogDeleteThreadComponent } from '../dialog-delete-thread/dialog-dele
 })
 export class ChatFieldComponent implements OnInit, OnChanges {
 
-  loading = true;
+  loading = false;
   threadView = false;
   disabled = true;
   loggedIn = 'Alexander Baraev';
-  currentChannel = 'testChannel2';
+  currentChannel = '';
   channelContent: any;
 
   constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService) { }
@@ -27,8 +27,11 @@ export class ChatFieldComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     // ------ load all Channel entries from firebase ------
-    this.firestore
-      .collection('channels/' + this.currentChannel + '/threads')
+    
+    this.globalV.getChannel().subscribe(value => {
+      // this.currentChannel = value;
+      this.firestore
+      .collection('channels/' + value + '/threads')
       .valueChanges({ idField: 'customIdName' })
       .subscribe((result) => {
         this.channelContent = result;
@@ -36,9 +39,14 @@ export class ChatFieldComponent implements OnInit, OnChanges {
           this.loading = false;
         }, 3000);
       })
+    })
+
+    
+
+
 
     this.globalV.threadView.subscribe(item => {
-      this.threadView = item;
+      this.threadView = item;      
     })
   }
 

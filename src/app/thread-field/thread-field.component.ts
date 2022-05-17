@@ -36,7 +36,7 @@ export class ThreadFieldComponent implements OnInit {
     // this.threadSelected = this.globalV.getThread();
     // console.log('selected:',this.globalV.getThread());
 
-    this.globalV.threadSelect.subscribe(item => {
+    this.globalV.getThread().subscribe(item => {
       this.threadSelected = item;
       this.firestore.collection('channels/' + this.currentChannel + '/threads/')
         .doc(item)
@@ -47,7 +47,7 @@ export class ThreadFieldComponent implements OnInit {
         })
     });
 
-    this.globalV.threadView.subscribe(item => {
+    this.globalV.getThreadView().subscribe(item => {
       this.threadView = item;
     })
 

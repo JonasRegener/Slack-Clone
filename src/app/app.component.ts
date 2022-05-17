@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalVariablesService } from './global-variables.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,9 @@ export class AppComponent {
 
   loading = false;  // if true, loading animation is shown
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, public globalV: GlobalVariablesService) {
+    this.globalV.setChannel('testChannel2');    
+   }
 
   isLoggedIn() {
     return this.router.url === '/chat-field';

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -7,35 +7,51 @@ import { Observable, Subject } from 'rxjs';
 })
 export class GlobalVariablesService {
 
-  public _threadView: Subject<boolean> = new Subject();
-  threadView: Observable<boolean> = this._threadView.asObservable();
+  public threadView!: BehaviorSubject<boolean>;
+  public threadSelect!: BehaviorSubject<string>;
+  public threadObject!: BehaviorSubject<object>;
+  public channelSelect!: BehaviorSubject<string>;
 
-  public _threadSelect: Subject<string> = new Subject();
-  threadSelect: Observable<string> = this._threadSelect.asObservable();
+  constructor() {
+    this.threadView = new BehaviorSubject<boolean>(false);
+    this.threadSelect = new BehaviorSubject<string>('');
+    this.threadObject = new BehaviorSubject<object>({});
+    this.channelSelect = new BehaviorSubject<string>('');
+  }
 
-  public _channelSelect: Subject<string> = new Subject();
-  channelSelect: Observable<string> = this._channelSelect.asObservable();
-
-  public _threadObject: Subject<Object> = new Subject();
-  threadObject: Observable<Object> = this._threadObject.asObservable();
-
-  constructor() { }
-
+  getThreadView(): Observable<boolean> {
+    return this.threadView.asObservable();
+  }
   setThreadView(boolValue: boolean) {
-    this._threadView.next(boolValue);
+    this.threadView.next(boolValue);
   }
 
+  getThread(): Observable<string> {
+    return this.threadSelect.asObservable();
+  }
   setThread(string: string) {
-    this._threadSelect.next(string);
+    this.threadSelect.next(string);
   }
 
-  setChannel(string: string) {
-    this._channelSelect.next(string);
+  getObject(): Observable<object> {
+    return this.threadObject.asObservable();
   }
-
   setObject(obj: any) {
-    this._threadObject.next(obj);
+    this.threadObject.next(obj);
   }
+
+  getChannel(): Observable<string> {
+    return this.channelSelect.asObservable();
+  }
+  setChannel(string: string): void {
+    this.channelSelect.next(string);
+  }
+
+
+
+  
+
+ 
 
 
 }
