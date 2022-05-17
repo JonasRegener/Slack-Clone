@@ -16,10 +16,10 @@
                         </div>
                     </div>
                     <div>
-                        <div *ngIf="content.comments.length > 0"><button (click)="addComment(content)">{{ content.comments.length }} {{ getCommentlength(content.comments.length) }}</button></div>
                         <ngx-emoji *ngIf=content.reactions matBadge="1" matBadgeSize="small"
                             emoji="{{ content.reactions }}">
                         </ngx-emoji>
+                        <div *ngIf="content.comments.length > 0"><button (click)="addComment(content)">{{ content.comments.length }} {{ getCommentlength(content.comments.length) }}</button></div>
                     </div>
                 </div>
                 <div class="reaction-bar">
