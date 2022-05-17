@@ -10,7 +10,6 @@ import { GlobalVariablesService } from './global-variables.service';
 export class AppComponent {
   title = 'Slack-Clone';
 
-  loading = false;  // if true, loading animation is shown
 
   constructor(public router: Router, public globalV: GlobalVariablesService) {
     this.globalV.setChannel('testChannel2');    

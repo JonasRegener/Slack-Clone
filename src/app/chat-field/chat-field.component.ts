@@ -12,7 +12,7 @@ import { DialogDeleteThreadComponent } from '../dialog-delete-thread/dialog-dele
 })
 export class ChatFieldComponent implements OnInit, OnChanges {
 
-  loading = false;
+  loading = true;
   threadView = false;
   disabled = true;
   loggedIn = 'Alexander Baraev';
@@ -29,9 +29,9 @@ export class ChatFieldComponent implements OnInit, OnChanges {
     // ------ load all Channel entries from firebase ------
     
     this.globalV.getChannel().subscribe(value => {
-      // this.currentChannel = value;
+      this.currentChannel = value;
       this.firestore
-      .collection('channels/' + value + '/threads')
+      .collection('channels/' + this.currentChannel + '/threads')
       .valueChanges({ idField: 'customIdName' })
       .subscribe((result) => {
         this.channelContent = result;
