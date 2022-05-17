@@ -129,16 +129,17 @@ header {
     width: 100%;
     overflow-y: auto;
     flex-direction: column;
+    height: 70vh;
 }
 
 .channel-field {
-    height: 100vh;
+    height: 90vh;
     width: 85vw !important;
     position: relative;
 }
 
 .thread-field {
-    height: 100vh;
+    height: 90vh;
     width: 30vw;
     position: relative;
 }
@@ -147,7 +148,7 @@ header {
     height: 90vh !important;
     width: 85vw;
     box-sizing: border-box;
-    overflow-x:hidden;
+    overflow:hidden;
 }
 
 .message-field-thread-position {
