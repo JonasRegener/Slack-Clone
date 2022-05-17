@@ -12,6 +12,7 @@ import { DialogDeleteThreadComponent } from '../dialog-delete-thread/dialog-dele
 })
 export class ChatFieldComponent implements OnInit, OnChanges {
 
+  loading = true;
   threadView = false;
   disabled = true;
   loggedIn = 'Alexander Baraev';
@@ -31,6 +32,9 @@ export class ChatFieldComponent implements OnInit, OnChanges {
       .valueChanges({ idField: 'customIdName' })
       .subscribe((result) => {
         this.channelContent = result;
+        setTimeout(() => {
+          this.loading = false;
+        }, 3000);
       })
 
     this.globalV.threadView.subscribe(item => {
@@ -76,5 +80,9 @@ export class ChatFieldComponent implements OnInit, OnChanges {
   }
 
 
+  getCommentlength(length: number) {
+    if (length < 2) { return 'Antwort' }
+    else { return 'Antworten' };
+  }
 
 }

@@ -1,7 +1,9 @@
+<app-loading-screen *ngIf="loading"></app-loading-screen>
+
 <div class="screen-field row">
     <div class="channel-field" [class.show-thread-field]="threadView">
-        <header>[Channel]</header>
-        <div class="content-field" *ngIf="channelContent">
+        <header *ngIf="!loading">[Channel]</header>
+        <div class="content-field" *ngIf="channelContent && !loading">
             <div class="content-entry" *ngFor="let content of channelContent; let i = index">
                 <div>
                     <img [src]=content.userPhotoURL>
@@ -14,6 +16,7 @@
                         </div>
                     </div>
                     <div>
+                        <div *ngIf="content.comments.length > 0"><button (click)="addComment(content)">{{ content.comments.length }} {{ getCommentlength(content.comments.length) }}</button></div>
                         <ngx-emoji *ngIf=content.reactions matBadge="1" matBadgeSize="small"
                             emoji="{{ content.reactions }}">
                         </ngx-emoji>
