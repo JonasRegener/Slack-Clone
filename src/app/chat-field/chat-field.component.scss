@@ -1,6 +1,6 @@
 header {
     height: 50px;
-    width: 100%;
+    width: 100% !important;
     font-weight: bold;
     font-size: 20px;
     border-bottom: 1px solid lightgray;
@@ -9,12 +9,6 @@ header {
     padding-left: 24px;
     justify-content: flex-start !important;
 
-}
-
-.ng-star-inserted {
-    width: 75%;
-    display: flex;
-    justify-content: flex-end;
 }
 
 .content-entry {
