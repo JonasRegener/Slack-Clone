@@ -17,7 +17,7 @@
                     </div>
                     <div>
                         <ngx-emoji *ngIf=content.reactions matBadge="1" matBadgeSize="small"
-                            emoji="{{ content.reactions }}">
+                            emoji="{{ content.reactions }}" class="reaction">
                         </ngx-emoji>
                         <div *ngIf="content.comments.length > 0"><button (click)="addComment(content)">{{ content.comments.length }} {{ getCommentlength(content.comments.length) }}</button></div>
                     </div>

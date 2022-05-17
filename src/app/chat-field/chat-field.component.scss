@@ -104,7 +104,10 @@ header {
     }
 }
 
-
+.reaction {
+    width: unset !important;
+    display: unset !important;
+}
 
 .text-field {
     width: 100%;
