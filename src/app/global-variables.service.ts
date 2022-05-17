@@ -19,6 +19,7 @@ export class GlobalVariablesService {
     this.channelSelect = new BehaviorSubject<string>('');
   }
 
+  // --- Getter and setter for threadView ---
   getThreadView(): Observable<boolean> {
     return this.threadView.asObservable();
   }
@@ -26,6 +27,7 @@ export class GlobalVariablesService {
     this.threadView.next(boolValue);
   }
 
+  // --- Getter and setter for threadSelect ---
   getThread(): Observable<string> {
     return this.threadSelect.asObservable();
   }
@@ -33,6 +35,7 @@ export class GlobalVariablesService {
     this.threadSelect.next(string);
   }
 
+  // --- Getter and setter for threadObject ---
   getObject(): Observable<object> {
     return this.threadObject.asObservable();
   }
@@ -40,6 +43,7 @@ export class GlobalVariablesService {
     this.threadObject.next(obj);
   }
 
+  // --- Getter and setter for channelSelect ---
   getChannel(): Observable<string> {
     return this.channelSelect.asObservable();
   }
@@ -49,9 +53,9 @@ export class GlobalVariablesService {
 
 
 
-  
 
- 
+
+
 
 
 }

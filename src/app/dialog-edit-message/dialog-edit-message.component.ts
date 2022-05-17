@@ -37,10 +37,6 @@ export class DialogEditMessageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.editor2 = new Editor();
     this.content = this.input.content;
-    // if(this.threadView) {
-    //   let element: any = document.querySelector('.cdk-overlay-container');
-    //   element.style = 'width: 70%;';
-    // }
   }
 
   ngOnDestroy(): void {

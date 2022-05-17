@@ -51,8 +51,6 @@ export class ThreadFieldComponent implements OnInit {
       this.threadView = item;
     })
 
-
-    // })
   }
 
   // Open message field for editing
