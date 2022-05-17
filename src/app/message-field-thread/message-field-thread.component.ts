@@ -45,14 +45,16 @@ export class MessageFieldThreadComponent implements OnInit {
   ngOnInit(): void {
     this.editor = new Editor();
 
+    
+    this.globalV.threadObject.subscribe(item => {
+      this.threadObject = item;
+    });
+
     this.globalV.threadSelect.subscribe(item => {
       this.threadSelected = item;
     });
 
 
-    this.globalV.threadObject.subscribe(item => {
-      this.threadObject = item;            
-    });
   }
 
   ngOnDestroy(): void {
@@ -74,15 +76,13 @@ export class MessageFieldThreadComponent implements OnInit {
     this.focused = false;
   }
 
-  // Add to the Channel JSON
   addToThread() {
     const today = new Date().toLocaleString('en-GB', { timeZone: 'CET' });
-    let contentInput = this.html;
+    let contentInput = this.form.controls['editorContent'].value;
     this.content = new ChannelEntryContent(contentInput, today);
-    this.entry = new ChannelEntry(this.loggedInUser, this.content);
-
+    this.entry = new ChannelEntry(this.loggedInUser, this.content);    
+    
     this.threadObject.comments.push(this.entry);
-
 
     this.firestore
       .collection('channels/' + this.currentChannel + '/threads/')
@@ -91,7 +91,7 @@ export class MessageFieldThreadComponent implements OnInit {
       .then(() => {
         this.form.reset();
       })
-      
+
   }
 
 }

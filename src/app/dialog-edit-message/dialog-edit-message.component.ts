@@ -37,10 +37,10 @@ export class DialogEditMessageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.editor2 = new Editor();
     this.content = this.input.content;
-    if(this.threadView) {
-      let element: any = document.querySelector('.cdk-overlay-container');
-      element.style = 'width: 70%;';
-    }
+    // if(this.threadView) {
+    //   let element: any = document.querySelector('.cdk-overlay-container');
+    //   element.style = 'width: 70%;';
+    // }
   }
 
   ngOnDestroy(): void {
@@ -48,8 +48,7 @@ export class DialogEditMessageComponent implements OnInit, OnDestroy {
   }
 
   saveChanges() {
-    let changes: any = document.querySelectorAll('.NgxEditor__Content > p');
-    this.input.content = changes[2].innerHTML;
+    this.input.content = this.content;   
     this.firestore
       .collection('channels/' + this.currentChannel + '/threads')
       .doc(this.input.customIdName)

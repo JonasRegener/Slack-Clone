@@ -1,7 +1,7 @@
 <div class="screen-field row">
     <div class="channel-field" [class.show-thread-field]="threadView">
         <header>[Channel]</header>
-        <div class="content-field">
+        <div class="content-field" *ngIf="channelContent">
             <div class="content-entry" *ngFor="let content of channelContent; let i = index">
                 <div>
                     <img [src]=content.userPhotoURL>
@@ -24,11 +24,11 @@
                     <ngx-emoji emoji="heart_eyes" (emojiClick)="addEmoji(i, 'heart_eyes')"></ngx-emoji>
                     <ngx-emoji emoji="thumbsup" (emojiClick)="addEmoji(i, 'thumbsup')"></ngx-emoji>
                     <ngx-emoji emoji="thumbsdown" (emojiClick)="addEmoji(i, 'thumbsdown')"></ngx-emoji>
-                    <mat-icon matTooltip="Add comment" (click)="addComment(content.customIdName, content)">reply
+                    <mat-icon matTooltip="Add comment" (click)="addComment(content)">reply
                     </mat-icon>
                     <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Edit note" (click)="openEditor(content)">
                         edit_note</mat-icon>
-                    <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Delete">delete</mat-icon>
+                    <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Delete" (click)="deleteThread(content)">delete</mat-icon>
                 </div>
             </div>
         </div>

@@ -1,9 +1,9 @@
-<div class="thread-container">
+<div class="thread-container" *ngIf="threadContent">
     <header>
         [Thread]
         <button mat-button (click)="closeComments()"><mat-icon>close</mat-icon></button>
     </header>
-    <div class="content-field-first-entry"  *ngIf="threadContent">
+    <div class="content-field-first-entry">
         <div class="content-entry">
             <div>
                 <img [src]=threadContent.userPhotoURL>
@@ -20,19 +20,19 @@
                 </div>
             </div>
             <div class="reaction-bar">
-                <ngx-emoji emoji="smiley" (emojiClick)="addEmoji(0, 'smiley')"></ngx-emoji>
-                <ngx-emoji emoji="heart_eyes" (emojiClick)="addEmoji(0, 'heart_eyes')"></ngx-emoji>
-                <ngx-emoji emoji="thumbsup" (emojiClick)="addEmoji(0, 'thumbsup')"></ngx-emoji>
-                <ngx-emoji emoji="thumbsdown" (emojiClick)="addEmoji(0, 'thumbsdown')"></ngx-emoji>
+                <ngx-emoji emoji="smiley" (emojiClick)="addEmoji(-1, 'smiley')"></ngx-emoji>
+                <ngx-emoji emoji="heart_eyes" (emojiClick)="addEmoji(-1, 'heart_eyes')"></ngx-emoji>
+                <ngx-emoji emoji="thumbsup" (emojiClick)="addEmoji(-1, 'thumbsup')"></ngx-emoji>
+                <ngx-emoji emoji="thumbsdown" (emojiClick)="addEmoji(-1, 'thumbsdown')"></ngx-emoji>
                 <!-- <mat-icon matTooltip="Add comment" (click)="addComment(threadContent)">reply</mat-icon> -->
-                <mat-icon *ngIf="threadContent.userName == loggedIn" matTooltip="Edit note" (click)="openEditor(threadContent, 'topic', threadContent, 0)">
+                <mat-icon *ngIf="threadContent.userName == loggedIn" matTooltip="Edit note" (click)="openEditor(threadContent, 'topic', threadContent, -1)">
                     edit_note</mat-icon>
                 <mat-icon *ngIf="threadContent.userName == loggedIn" matTooltip="Delete">delete</mat-icon>
             </div>
         </div>
     </div>
 
-    <div class="content-field" *ngIf="threadContent">
+    <div class="content-field">
         <div *ngIf="threadContent.comments.length > 0" class="number-of-comments">
             <div>{{ threadContent.comments.length }} {{ getCommentlength() }}</div>
             <div><hr></div>
