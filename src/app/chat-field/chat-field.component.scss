@@ -133,7 +133,7 @@ header {
 
 .channel-field {
     height: 100vh;
-    width: 100vw !important;
+    width: 85vw !important;
     position: relative;
 }
 
@@ -145,9 +145,9 @@ header {
 
 .screen-field {
     height: 90vh !important;
-/*     width: 100vw; */
+    width: 85vw;
     box-sizing: border-box;
-    // overflow-x:hidden;
+    overflow-x:hidden;
 }
 
 .message-field-thread-position {
@@ -158,11 +158,11 @@ header {
 }
 
 .show-thread-field {
-    width:70vw !important;
+    width:55vw !important;
 }
 
 .border-left{
     border-left: 1px solid lightgray;
     height: 100vh;
-    width: 30% !important;
+    width: 30vw !important;
 }
