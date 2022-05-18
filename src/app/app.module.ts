@@ -42,6 +42,7 @@ import { DialogEditThreadCommentComponent } from './dialog-edit-thread-comment/d
 import { RouterModule } from '@angular/router';
 import { MessageFieldThreadComponent } from './message-field-thread/message-field-thread.component';
 import { DialogDeleteThreadComponent } from './dialog-delete-thread/dialog-delete-thread.component';
+import { DialogDeleteCommentComponent } from './dialog-delete-comment/dialog-delete-comment.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { DialogDeleteThreadComponent } from './dialog-delete-thread/dialog-delet
     ThreadFieldComponent,
     DialogEditThreadCommentComponent,
     MessageFieldThreadComponent,
-    DialogDeleteThreadComponent
+    DialogDeleteThreadComponent,
+    DialogDeleteCommentComponent
   ],
   imports: [
     BrowserModule,

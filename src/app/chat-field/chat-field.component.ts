@@ -41,11 +41,7 @@ export class ChatFieldComponent implements OnInit, OnChanges {
       })
     })
 
-    
-
-
-
-    this.globalV.threadView.subscribe(item => {
+    this.globalV.getThreadView().subscribe(item => {
       this.threadView = item;      
     })
   }

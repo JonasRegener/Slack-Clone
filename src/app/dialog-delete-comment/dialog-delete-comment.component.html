@@ -1,0 +1,7 @@
+<div>
+    <h1 mat-dialog-title>Do you really want to delete this comment?</h1>
+    <div mat-dialog-actions>
+        <button mat-button (click)="dialogRef.close()">Cancel</button>
+        <button mat-button cdkFocusInitial (click)="deleteComment()">Yes</button>
+    </div>
+</div>

@@ -27,7 +27,7 @@
                 <!-- <mat-icon matTooltip="Add comment" (click)="addComment(threadContent)">reply</mat-icon> -->
                 <mat-icon *ngIf="threadContent.userName == loggedIn" matTooltip="Edit note" (click)="openEditor(threadContent, 'topic', threadContent, -1)">
                     edit_note</mat-icon>
-                <mat-icon *ngIf="threadContent.userName == loggedIn" matTooltip="Delete">delete</mat-icon>
+                <mat-icon *ngIf="threadContent.userName == loggedIn" matTooltip="Delete" (click)="deleteThread(threadContent)">delete</mat-icon>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
                 <!-- <mat-icon matTooltip="Add comment" (click)="addComment(content.customIdName)">reply</mat-icon> -->
                 <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Edit note" (click)="openEditor(content, 'comment', threadContent, i)">
                     edit_note</mat-icon>
-                <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Delete">delete</mat-icon>
+                <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Delete" (click)="deleteComment(threadContent, i)">delete</mat-icon>
             </div>
         </div>
     </div>

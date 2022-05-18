@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogDeleteCommentComponent } from '../dialog-delete-comment/dialog-delete-comment.component';
+import { DialogDeleteThreadComponent } from '../dialog-delete-thread/dialog-delete-thread.component';
 import { DialogEditMessageComponent } from '../dialog-edit-message/dialog-edit-message.component';
 import { DialogEditThreadCommentComponent } from '../dialog-edit-thread-comment/dialog-edit-thread-comment.component';
 import { GlobalVariablesService } from '../global-variables.service';
@@ -91,6 +93,25 @@ export class ThreadFieldComponent implements OnInit {
 
   closeComments() {
     this.globalV.setThreadView(false);
+  }
+
+  deleteComment(content: any, index: number) {
+    const dialogRef = this.dialog.open(DialogDeleteCommentComponent);
+    dialogRef.componentInstance.input = content;
+    dialogRef.componentInstance.index = index;
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('content:', content);
+    });
+  }
+
+  deleteThread(content: any) {
+    const dialogRef = this.dialog.open(DialogDeleteThreadComponent);
+    dialogRef.componentInstance.input = content;
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('content:', content);
+    });
   }
 
 }
