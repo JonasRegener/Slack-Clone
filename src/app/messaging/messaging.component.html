@@ -3,16 +3,16 @@
 <div class="screen-field row">
     <div class="channel-field">
         <header *ngIf="!loading">{{ currentMessage }}</header>
-        <div class="content-field" *ngIf="channelContent && !loading">
+        <div class="content-field-first-entry" *ngIf="channelContent && !loading">
             <div class="content-entry">
                 <div>
                     <img src="assets/img/profileAlex.jpg">
                 </div>
                 <div class="full-width">
-                    <span class="displayName">{{ user.user }} <span class="postedAt">{{ user.user
+                    <span class="displayName">{{ channelContent.receiverUID }} <span class="postedAt">{{ channelContent.date
                             }}</span></span>
                     <div>
-                        <div id="content" class="content full-width" [innerHTML]="user.user">
+                        <div id="content" class="content full-width" [innerHTML]="channelContent.message">
                         </div>
                     </div>
                     <!-- <div>
@@ -35,7 +35,39 @@
                 </div> -->
             </div>
         </div>
-        <app-message-field class="message-field-thread-position"></app-message-field>
+        <div class="content-field">
+            <div class="content-entry" *ngFor="let reply of channelContent.replies">
+                <div>
+                    <img src="assets/img/profileAlex.jpg">
+                </div>
+                <div class="full-width">
+                    <span class="displayName">{{ reply.sentByUID }} <span class="postedAt">{{ reply.date
+                            }}</span></span>
+                    <div>
+                        <div id="content" class="content full-width" [innerHTML]="reply.message">
+                        </div>
+                    </div>
+                    <!-- <div>
+                        <ngx-emoji *ngIf=content.reactions matBadge="1" matBadgeSize="small"
+                            emoji="{{ content.reactions }}" class="reaction">
+                        </ngx-emoji>
+                        <div *ngIf="content.comments.length > 0"><button (click)="addComment(content)">{{ content.comments.length }} {{ getCommentlength(content.comments.length) }}</button></div>
+                    </div> -->
+                </div>
+                <!-- <div class="reaction-bar">
+                    <ngx-emoji emoji="smiley" (emojiClick)="addEmoji(i, 'smiley')"></ngx-emoji>
+                    <ngx-emoji emoji="heart_eyes" (emojiClick)="addEmoji(i, 'heart_eyes')"></ngx-emoji>
+                    <ngx-emoji emoji="thumbsup" (emojiClick)="addEmoji(i, 'thumbsup')"></ngx-emoji>
+                    <ngx-emoji emoji="thumbsdown" (emojiClick)="addEmoji(i, 'thumbsdown')"></ngx-emoji>
+                    <mat-icon matTooltip="Add comment" (click)="addComment(content)">reply
+                    </mat-icon>
+                    <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Edit note" (click)="openEditor(content)">
+                        edit_note</mat-icon>
+                    <mat-icon *ngIf="content.userName == loggedIn" matTooltip="Delete" (click)="deleteThread(content)">delete</mat-icon>
+                </div> -->
+            </div>
+        </div>
+        <app-message-field-private class="message-field-thread-position"></app-message-field-private>
     </div>
 
 </div>
