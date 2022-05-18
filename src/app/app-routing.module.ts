@@ -10,6 +10,7 @@ import { AuthGuard } from './authentication/guard/auth.guard';
 import { ChatFieldComponent } from './chat-field/chat-field.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { MessagingComponent } from './messaging/messaging.component';
 
 const routes: Routes = [
   { path: '', component: SignInComponent },
@@ -17,10 +18,11 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email', component: VerifyEmailComponent },
-  { path: 'loading-screen', component: LoadingScreenComponent }, // testing Path for loading-screen animation
-  { path: 'chat-field', component: ChatFieldComponent }, 
+  { path: 'loading-screen', component: LoadingScreenComponent },
+  { path: 'channels', component: ChatFieldComponent }, 
   { path: 'header', component: HeaderComponent },
-  { path: 'sidebar', component: SidebarComponent }
+  { path: 'sidebar', component: SidebarComponent },
+  { path: 'messaging', component: MessagingComponent }
 ];
 
 @NgModule({

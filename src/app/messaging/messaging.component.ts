@@ -5,41 +5,40 @@ import { DialogEditMessageComponent } from '../dialog-edit-message/dialog-edit-m
 import { GlobalVariablesService } from '../global-variables.service';
 import { Observable, Subject } from 'rxjs';
 import { DialogDeleteThreadComponent } from '../dialog-delete-thread/dialog-delete-thread.component';
+import { AuthGuard } from '../authentication/guard/auth.guard';
+
 @Component({
-  selector: 'app-chat-field',
-  templateUrl: './chat-field.component.html',
-  styleUrls: ['./chat-field.component.scss']
+  selector: 'app-messaging',
+  templateUrl: './messaging.component.html',
+  styleUrls: ['./messaging.component.scss']
 })
-export class ChatFieldComponent implements OnInit {
+export class MessagingComponent implements OnInit {
 
   loading = true;
-  threadView = false;
   disabled = true;
   loggedIn = 'Alexander Baraev';
-  currentChannel = '';
+  currentMessage = 'HTEeKWuco3CZLMJWWNgH';
   channelContent: any;
+  user: any;
 
-  constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService) { }
+  constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService) { 
+
+  }
 
   ngOnInit(): void {
-    // ------ load all Channel entries from firebase ------
-    
-    this.globalV.getChannel().subscribe(value => {
-      this.currentChannel = value;
-      this.firestore
-      .collection('channels/' + this.currentChannel + '/threads')
-      .valueChanges({ idField: 'customIdName' })
-      .subscribe((result) => {
-        this.channelContent = result;
-        setTimeout(() => {
-          this.loading = false;
-        }, 3000);
-      })
-    })
 
-    this.globalV.getThreadView().subscribe(item => {
-      this.threadView = item;      
-    })
+    // this.globalV.getChannel().subscribe(value => {
+    //   this.currentMessage = value;
+      this.firestore
+      .collection('messages')
+      .doc(this.currentMessage)
+      .valueChanges({ idField: 'customIdName' })
+      .subscribe((value) => {
+        this.channelContent = value;
+        this.loading = false;
+      })
+    // })
+
   }
 
   // Open message field for editing

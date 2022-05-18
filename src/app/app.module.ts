@@ -43,6 +43,7 @@ import { RouterModule } from '@angular/router';
 import { MessageFieldThreadComponent } from './message-field-thread/message-field-thread.component';
 import { DialogDeleteThreadComponent } from './dialog-delete-thread/dialog-delete-thread.component';
 import { DialogDeleteCommentComponent } from './dialog-delete-comment/dialog-delete-comment.component';
+import { MessagingComponent } from './messaging/messaging.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { DialogDeleteCommentComponent } from './dialog-delete-comment/dialog-del
     DialogEditThreadCommentComponent,
     MessageFieldThreadComponent,
     DialogDeleteThreadComponent,
-    DialogDeleteCommentComponent
+    DialogDeleteCommentComponent,
+    MessagingComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,149 @@
+header {
+    height: 50px;
+    width: 100% !important;
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+    justify-content: flex-start !important;
+
+}
+
+.content-entry {
+    width: 100%;
+    height: auto;
+    padding: 8px 24px 8px 24px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+
+    img {
+        height: 50px;
+        width: 50px;
+        object-fit: cover;
+    }
+
+    &:hover {
+        background-color: rgba(0,0,0,0.05)
+    }
+
+    &:hover .reaction-bar {
+        display: flex;
+    }
+}
+
+.displayName {
+    padding-left: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 !important;
+}
+
+.postedAt {
+    font-weight: 200;
+    font-size: 12px;
+}
+
+.content {
+    margin-top: 4px;
+    padding-left: 8px;
+}
+
+.reaction-bar {
+    height: 40px;
+    width: auto;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 16px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 4px;
+    align-items: center;
+    padding-left: 8px;
+    background-color: white;
+
+    ngx-emoji {
+        background-color: transparent;
+        margin-right: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 30px;
+        padding-top: 8px;
+        text-align: center;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+    }
+
+    mat-icon {
+        margin-right: 4px;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+
+
+        &:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+    
+    }
+}
+
+.reaction {
+    width: unset !important;
+    display: unset !important;
+}
+
+.text-field {
+    width: 100%;
+    position: relative;
+}
+
+.cancel-edit-btn {
+    position: absolute;
+    bottom: 0; 
+    right: 0;
+}
+
+::ng-deep .mat-dialog-container {
+    display: unset !important;
+    padding: unset !important;
+}
+
+.content-field {
+    width: 100%;
+    overflow-y: auto;
+    flex-direction: column;
+    height: 70vh;
+}
+
+.channel-field {
+    height: 90vh;
+    width: 85vw !important;
+    position: relative;
+}
+
+
+.screen-field {
+    height: 90vh !important;
+    width: 85vw;
+    box-sizing: border-box;
+    overflow:hidden;
+}
+
+.message-field-thread-position {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+}
+
