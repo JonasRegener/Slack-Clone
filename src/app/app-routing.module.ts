@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'header', component: HeaderComponent },
   { path: 'sidebar', component: SidebarComponent },
   { path: 'messaging', component: MessagingComponent },
-  { path: 'user-details/:id', component: UserDetailComponent }
+  { path: 'user-detail/:id', component: UserDetailComponent }
   
 ];
 

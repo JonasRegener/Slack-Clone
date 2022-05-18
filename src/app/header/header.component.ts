@@ -12,23 +12,15 @@ import { User } from '../authentication/services/user.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  testicus = [];
+
   constructor(private firestore: AngularFirestore, public authService: AuthService, public auth: AngularFireAuth, public UserService: UserService) { }
 
   ngOnInit(): void {
     this.firestore
       .collection('users')
       .valueChanges({idField: 'uid'})
-      .subscribe((changes: any) => {
-        console.log('Recieved Users', changes);
-        this.testicus = changes
-      })
+      .subscribe()
   }
 
-
-  SignOut() {
-    this.auth.signOut();
-
-  }
 
 }

@@ -11,6 +11,7 @@ import { Firestore } from '@angular/fire/firestore';
 export class SidebarComponent implements OnInit {
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   allChannels = [];
+  allMessages = [];
   channels = new channels;
   constructor(private firestore: AngularFirestore) { }
 
@@ -19,8 +20,19 @@ export class SidebarComponent implements OnInit {
       .collection('channels')
       .valueChanges()
       .subscribe((changes: any) => {
-        console.log('New Channel found', changes);
+        console.log('Channels are found', changes);
         this.allChannels = changes;
+        this.getMessages();
+      });
+  }
+  getMessages() {
+    this.firestore
+      .collection('messages')
+      .valueChanges()
+      .subscribe((changes: any) => {
+        console.log('Messages are found', changes);
+        this.allMessages = changes;
+    
       });
   }
 

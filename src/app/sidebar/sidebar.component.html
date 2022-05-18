@@ -1,19 +1,19 @@
 <mat-toolbar class="sidebar-toolbar" color="primary">
 
-    <mat-selection-list [multiple]="false">
+    <mat-selection-list #channels [multiple]="false">
         Channels
-        <mat-list-option *ngFor="let channels of allChannels">
-            {{ channels}}
+        <mat-list-option *ngFor="let channels of allChannels" [value]="channels">
+            {{ channels['name'] }}
         </mat-list-option>
 
         Private Messages
-        <mat-list-option>
-            Tesz2
+        <mat-list-option *ngFor="let messages of allMessages" [value]="channels">
+            {{ messages['receiverUID'] }}
         </mat-list-option>
         <p>
-            Option selected: <br><b>  Ergebnis </b>
-          </p>
+            Option selected: <br><b> {{channels.selectedOptions.selected[0]?.value}} Ergebnis </b>
+        </p>
     </mat-selection-list>
-    
+
 
 </mat-toolbar>

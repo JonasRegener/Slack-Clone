@@ -3,11 +3,11 @@
     <p *ngIf="authService.userData as user">
 
         Hallo <br>
-
+        {{ user.photoURL }}
 
         <b> {{(user.displayName) ? user.displayName : 'Kein Name vorhanden'}} </b> <br>
-        {{ user.email }}
-        {{ user.photoURL }}
-        {{ user.lastLoginAt }}
+        {{ user.email }} <br>
+        {{ user.emailVerified }}
+        
     </p>
 </mat-card>
