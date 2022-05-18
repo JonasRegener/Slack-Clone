@@ -1,0 +1,13 @@
+<mat-card>
+    <p>user-detail works!</p>
+    <p *ngIf="authService.userData as user">
+
+        Hallo <br>
+
+
+        <b> {{(user.displayName) ? user.displayName : 'Kein Name vorhanden'}} </b> <br>
+        {{ user.email }}
+        {{ user.photoURL }}
+        {{ user.lastLoginAt }}
+    </p>
+</mat-card>

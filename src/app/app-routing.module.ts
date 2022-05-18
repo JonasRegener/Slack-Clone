@@ -11,6 +11,7 @@ import { ChatFieldComponent } from './chat-field/chat-field.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MessagingComponent } from './messaging/messaging.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
   { path: '', component: SignInComponent },
@@ -22,7 +23,9 @@ const routes: Routes = [
   { path: 'channels', component: ChatFieldComponent }, 
   { path: 'header', component: HeaderComponent },
   { path: 'sidebar', component: SidebarComponent },
-  { path: 'messaging', component: MessagingComponent }
+  { path: 'messaging', component: MessagingComponent },
+  { path: 'user-details/:id', component: UserDetailComponent }
+  
 ];
 
 @NgModule({
