@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { channels } from '../models/channels.class';
+import { Firestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
-  constructor() { }
+  allChannels = [];
+  channels = new channels;
+  constructor(private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
+    this.firestore
+      .collection('channels')
+      .valueChanges()
+      .subscribe((changes: any) => {
+        console.log('New Channel found', changes);
+        this.allChannels = changes;
+      });
   }
 
 }

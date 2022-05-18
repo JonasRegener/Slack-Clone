@@ -9,7 +9,7 @@
         </div>
         <div class="user_container">
             <mat-icon matTooltip="Do you need any help?">flag</mat-icon>
-            <mat-icon matTooltip="Log In User Name">supervised_user_circle</mat-icon>
+            <mat-icon (click)="SignOut()" *ngIf="authService.userData as user" matTooltip='Hello "{{ user.uid }}", klicke hier zum ausloggen'>supervised_user_circle</mat-icon>
 
         </div>
 

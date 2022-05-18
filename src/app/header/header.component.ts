@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AuthService } from '../authentication/services/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private firestore: AngularFirestore, public authService: AuthService, public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
+
+    }
+    
+  
+    SignOut() {
+    this.auth.signOut();
+    
   }
 
 }

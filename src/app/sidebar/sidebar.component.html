@@ -1,18 +1,19 @@
 <mat-toolbar class="sidebar-toolbar" color="primary">
 
-    <mat-selection-list #shoes [multiple]="false">
+    <mat-selection-list [multiple]="false">
         Channels
-        <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">
-            {{shoe}}
+        <mat-list-option *ngFor="let channels of allChannels">
+            {{ channels}}
         </mat-list-option>
 
         Private Messages
-        <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">
-            {{shoe}}
+        <mat-list-option>
+            Tesz2
         </mat-list-option>
+        <p>
+            Option selected: <br><b>  Ergebnis </b>
+          </p>
     </mat-selection-list>
-    <p>
-        Option selected: {{shoes.selectedOptions.selected[0]?.value}}
-      </p>
+    
 
 </mat-toolbar>
