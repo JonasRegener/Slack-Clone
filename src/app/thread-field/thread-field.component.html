@@ -37,12 +37,12 @@
             <div>{{ threadContent.comments.length }} {{ getCommentlength() }}</div>
             <div><hr></div>
         </div>
-        <div class="content-entry" *ngFor="let content of threadContent.comments; let i = index">
+        <div class="content-entry" *ngFor="let content of sortComments; let i = index">
             <div>
                 <img [src]=content.userPhotoURL>
             </div>
             <div class="full-width">
-                <span class="displayName">{{ content.userName }} <span class="postedAt">{{ content.postedAt
+                <span class="displayName">{{ content.userName }} <span class="postedAt">{{ convertToDate(content.postedAt)
                         }}</span></span>
                 <div>
                     <div id="content-{{ i }}" class="content full-width" [innerHTML]="content.content"></div>

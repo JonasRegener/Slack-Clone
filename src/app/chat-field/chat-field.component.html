@@ -4,13 +4,12 @@
     <div class="channel-field" [class.show-thread-field]="threadView">
         <header *ngIf="!loading">{{ currentChannel }}</header>
         <div class="content-field" *ngIf="channelContent && !loading">
-            <div class="content-entry" *ngFor="let content of channelContent; let i = index">
+            <div class="content-entry" *ngFor="let content of sortChannel; let i = index">
                 <div>
                     <img [src]=content.userPhotoURL>
                 </div>
                 <div class="full-width">
-                    <span class="displayName">{{ content.userName }} <span class="postedAt">{{ content.postedAt
-                            }}</span></span>
+                    <span class="displayName">{{ content.userName }} <span class="postedAt">{{ convertToDate(content.postedAt) }}</span></span>
                     <div>
                         <div id="content-{{ i }}" class="content full-width" [innerHTML]="content.content">
                         </div>

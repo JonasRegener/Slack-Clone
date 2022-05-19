@@ -18,6 +18,7 @@ export class ChatFieldComponent implements OnInit {
   loggedIn = 'Alexander Baraev';
   currentChannel = '';
   channelContent: any;
+  editorOpened = false;
 
   constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService) { }
 
@@ -42,6 +43,10 @@ export class ChatFieldComponent implements OnInit {
     this.globalV.getThreadView().subscribe(item => {
       this.threadView = item;      
     })
+
+    this.globalV.getEditor().subscribe(item => {
+      this.editorOpened = item;
+    })
   }
 
   get sortChannel() {
@@ -50,20 +55,37 @@ export class ChatFieldComponent implements OnInit {
     });
   }
 
+  convertToDate(time: number) {
+    let convertedDate = new Date(time);
+    return convertedDate.toLocaleString('en-GB', { timeZone: 'CET' });
+  }
+
   // Open message field for editing
   openEditor(content: any) {
-    const dialogRef = this.dialog.open(DialogEditMessageComponent);
-    console.log('unten');
+    if(!this.editorOpened) {
+      this.globalV.setEditor(true);
+      const dialogRef = this.dialog.open(DialogEditMessageComponent);
+      console.log('unten');
+  
+      dialogRef.componentInstance.input = content;
+      // dialogRef.componentInstance.threadView = this.threadView;
+  
+      let element: any = document.querySelector('.cdk-overlay-container');
+      if(this.threadView){
+        element.style = 'width: 55%; left: 15%; right: 30%;';
+      } 
+      if(!this.threadView){
+        element.style = 'width: 85%; left: 15%;';
+      }
+  
+      dialogRef.afterClosed().subscribe((result) => {
+        this.globalV.setEditor(false);
+      });
+    } 
+    else {
+      alert('First finish editing your comment');
+    }
 
-    dialogRef.componentInstance.input = content;
-    // dialogRef.componentInstance.threadView = this.threadView;
-
-    let element: any = document.querySelector('.cdk-overlay-container');
-    element.style = 'width: 100%;';
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('content:', content);
-    });
   }
 
   // add reaction
