@@ -34,9 +34,9 @@ import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { MessageFieldComponent } from './message-field/message-field.component';
 import { NgxEditorModule, schema } from 'ngx-editor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { DialogEditMessageComponent } from './dialog-edit-message/dialog-edit-message.component';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { ThreadFieldComponent } from './thread-field/thread-field.component';
 import { DialogEditThreadCommentComponent } from './dialog-edit-thread-comment/dialog-edit-thread-comment.component';
 import { RouterModule } from '@angular/router';
@@ -46,6 +46,10 @@ import { DialogDeleteCommentComponent } from './dialog-delete-comment/dialog-del
 import { MessagingComponent } from './messaging/messaging.component';
 import { MessageFieldPrivateComponent } from './message-field-private/message-field-private.component';
 import { AuthGuard } from './authentication/guard/auth.guard';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { NewChannelComponent } from './new-channel/new-channel.component';
+import { MatCardModule } from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -67,7 +71,9 @@ import { AuthGuard } from './authentication/guard/auth.guard';
     DialogDeleteThreadComponent,
     DialogDeleteCommentComponent,
     MessagingComponent,
-    MessageFieldPrivateComponent
+    MessageFieldPrivateComponent,
+    UserDetailComponent,
+    NewChannelComponent
   ],
   imports: [
     BrowserModule,
@@ -94,6 +100,7 @@ import { AuthGuard } from './authentication/guard/auth.guard';
     ReactiveFormsModule,
     MatDialogModule,
     MatButtonModule,
+    MatCardModule,
     NgxEditorModule.forRoot({
       locals: {
         // menu

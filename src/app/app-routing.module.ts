@@ -11,6 +11,7 @@ import { ChatFieldComponent } from './chat-field/chat-field.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MessagingComponent } from './messaging/messaging.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
   {path: '', canActivate:[AuthGuard], children: [

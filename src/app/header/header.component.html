@@ -8,8 +8,9 @@
               </mat-form-field>
         </div>
         <div class="user_container">
-            <mat-icon matTooltip="Do you need any help?">flag</mat-icon>
-            <mat-icon (click)="SignOut()" *ngIf="authService.userData as user" matTooltip='Hello "{{ user.uid }}", klicke hier zum ausloggen'>supervised_user_circle</mat-icon>
+            <mat-icon matTooltip="Do you need any help?">flag</mat-icon> <mat-icon  *ngIf="authService.userData as user" matTooltip="Hallo {{(user.displayName) ? user.displayName : 'Kein Name vorhanden'}}, klicke hier um deine Account Details einzusehen" routerLinkActive="router-link-active" [routerLink]="'/user-detail/' + user.uid">supervised_user_circle</mat-icon>
+          <p (click)="authService.SignOut()" *ngIf="authService.userData as user" matTooltip="Klicke hier um dich auszuloggen">{{ user.email }} </p>  
+            
 
         </div>
 
