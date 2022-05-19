@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { channels } from '../models/channels.class';
 import { Firestore } from '@angular/fire/firestore';
 
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
