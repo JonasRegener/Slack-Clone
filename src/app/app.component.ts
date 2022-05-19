@@ -16,7 +16,7 @@ export class AppComponent {
    }
 
   isLoggedIn() {
-    return this.router.url === '/chat-field';
+    return this.router.url === '/channels';
   }
 
 }
