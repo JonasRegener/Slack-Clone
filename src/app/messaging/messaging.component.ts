@@ -41,6 +41,17 @@ export class MessagingComponent implements OnInit {
 
   }
 
+  get sortMessages() {
+    return this.channelContent.replies.sort((a: any, b: any) => {
+      return <any>new Date(a.postedAt) - <any>new Date(b.postedAt);
+    });
+  }
+
+  convertToDate(time: number) {
+    let convertedDate = new Date(time);
+    return convertedDate.toLocaleString('en-GB', { timeZone: 'CET' });
+  }
+
   // Open message field for editing
   openEditor(content: any) {
     const dialogRef = this.dialog.open(DialogEditMessageComponent);

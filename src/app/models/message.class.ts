@@ -2,11 +2,11 @@ export class Message {
     sentByUID!: string;
     receiverUID!: string;
     message!: string;
-    date!: string;
+    date!: number;
     reaction: string = '';
     replies = [];
 
-    constructor(sentByUID: string, receiverUID: string, message: string, date: string,) {
+    constructor(sentByUID: string, receiverUID: string, message: string, date: number,) {
         this.sentByUID = sentByUID;
         this.receiverUID = receiverUID;
         this.message = message;

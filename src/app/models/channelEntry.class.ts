@@ -2,7 +2,7 @@ export class ChannelEntry {
     userName!: string;
     userPhotoURL!: string;
     content!: string;
-    postedAt!: string;
+    postedAt!: number;
     reactions: string = '';
     comments = [];
 

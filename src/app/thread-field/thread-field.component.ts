@@ -55,6 +55,17 @@ export class ThreadFieldComponent implements OnInit {
 
   }
 
+  get sortComments() {
+    return this.threadContent.comments.sort((a: any, b: any) => {
+      return <any>new Date(a.postedAt) - <any>new Date(b.postedAt);
+    });
+  }
+
+  convertToDate(time: number) {
+    let convertedDate = new Date(time);
+    return convertedDate.toLocaleString('en-GB', { timeZone: 'CET' });
+  }
+
   // Open message field for editing
   openEditor(content: any, location: string, thread: any, index: number) {
     console.log('rechts oben');

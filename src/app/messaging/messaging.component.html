@@ -36,12 +36,12 @@
             </div>
         </div>
         <div class="content-field">
-            <div class="content-entry" *ngFor="let reply of channelContent.replies">
+            <div class="content-entry" *ngFor="let reply of sortMessages">
                 <div>
                     <img src="assets/img/profileAlex.jpg">
                 </div>
                 <div class="full-width">
-                    <span class="displayName">{{ reply.sentByUID }} <span class="postedAt">{{ reply.date
+                    <span class="displayName">{{ reply.sentByUID }} <span class="postedAt">{{ convertToDate(reply.date)
                             }}</span></span>
                     <div>
                         <div id="content" class="content full-width" [innerHTML]="reply.message">

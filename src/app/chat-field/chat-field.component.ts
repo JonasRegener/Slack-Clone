@@ -50,6 +50,11 @@ export class ChatFieldComponent implements OnInit {
     });
   }
 
+  convertToDate(time: number) {
+    let convertedDate = new Date(time);
+    return convertedDate.toLocaleString('en-GB', { timeZone: 'CET' });
+  }
+
   // Open message field for editing
   openEditor(content: any) {
     const dialogRef = this.dialog.open(DialogEditMessageComponent);

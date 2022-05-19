@@ -77,7 +77,8 @@ export class MessageFieldPrivateComponent implements OnInit, OnDestroy, AfterVie
 
   // Add to the Channel JSON
   addToChat() {
-    const today = new Date().toLocaleString('en-GB', { timeZone: 'CET' });
+    // const today = new Date().toLocaleString('en-GB', { timeZone: 'CET' });
+    const today = new Date().getTime();
     let contentInput = this.form.controls['editorContent'].value;
     
     this.sendMessage = new Message('sentByUID', 'receiverUID', contentInput, today);

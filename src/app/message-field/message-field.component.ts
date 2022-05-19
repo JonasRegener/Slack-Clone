@@ -66,7 +66,8 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // Add to the Channel JSON
   addToChannel() {
-    const today = new Date().toLocaleString('en-GB', { timeZone: 'CET' });
+    // const today = new Date().toLocaleString('en-GB', { timeZone: 'CET' });
+    const today = new Date().getTime();
     let contentInput = this.form.controls['editorContent'].value;
     
     this.content = new ChannelEntryContent(contentInput, today);
