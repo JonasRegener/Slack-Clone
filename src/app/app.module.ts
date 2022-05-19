@@ -45,6 +45,7 @@ import { DialogDeleteThreadComponent } from './dialog-delete-thread/dialog-delet
 import { DialogDeleteCommentComponent } from './dialog-delete-comment/dialog-delete-comment.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import { MessageFieldPrivateComponent } from './message-field-private/message-field-private.component';
+import { AuthGuard } from './authentication/guard/auth.guard';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { NewChannelComponent } from './new-channel/new-channel.component';
 import { MatCardModule } from '@angular/material/card';
@@ -120,7 +121,7 @@ import { MatCardModule } from '@angular/material/card';
       },
     }),
   ],
-  providers: [AuthService],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
