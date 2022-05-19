@@ -14,23 +14,16 @@ import { MessagingComponent } from './messaging/messaging.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
-    { 
-      path: '', 
-      component: SignInComponent ,
-      canActivateChild: [AuthGuard],
-      children: [
-        { path: 'sign-up', component: SignUpComponent },
-        { path: 'dashboard', component: DashboardComponent },
-        { path: 'forgot-password', component: ForgotPasswordComponent },
-        { path: 'verify-email', component: VerifyEmailComponent },
-        { path: 'loading-screen', component: LoadingScreenComponent },
-        { path: 'channels', component: ChatFieldComponent }, 
-        { path: 'header', component: HeaderComponent },
-        { path: 'sidebar', component: SidebarComponent },
-        { path: 'messaging', component: MessagingComponent }
-      ]
-    },
-
+    { path: '', component: SignInComponent },
+    { path: 'sign-up', component: SignUpComponent },
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'forgot-password', component: ForgotPasswordComponent },
+    { path: 'verify-email', component: VerifyEmailComponent },
+    { path: 'loading-screen', component: LoadingScreenComponent, canActivate:[AuthGuard] },
+    { path: 'channels', component: ChatFieldComponent, canActivate:[AuthGuard] }, 
+    { path: 'header', component: HeaderComponent, canActivate:[AuthGuard] },
+    { path: 'sidebar', component: SidebarComponent, canActivate:[AuthGuard] },
+    { path: 'messaging', component: MessagingComponent, canActivate:[AuthGuard] }
 ];
 
 
