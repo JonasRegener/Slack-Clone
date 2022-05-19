@@ -20,6 +20,7 @@ export class ThreadFieldComponent implements OnInit {
   threadContent: any;
   threadSelected: string = '';
   threadView: boolean = false;
+  editorOpened = false;
 
 
   constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService) { }
@@ -53,6 +54,10 @@ export class ThreadFieldComponent implements OnInit {
       this.threadView = item;
     })
 
+    this.globalV.getEditor().subscribe(item => {
+      this.editorOpened = item;
+    })
+
   }
 
   get sortComments() {
@@ -68,25 +73,33 @@ export class ThreadFieldComponent implements OnInit {
 
   // Open message field for editing
   openEditor(content: any, location: string, thread: any, index: number) {
-    console.log('rechts oben');
+    if (!this.editorOpened) {
+      this.globalV.setEditor(true);
 
-    const dialogRef = this.dialog.open(DialogEditThreadCommentComponent);
-    dialogRef.componentInstance.input = content;
-    dialogRef.componentInstance.editLocation = location;
-    dialogRef.componentInstance.thread = thread;
-    dialogRef.componentInstance.index = index;
+      console.log('rechts oben');
 
-    let element: any = document.querySelector('.cdk-overlay-container');
-    element.style = 'width: 30%; left: unset; right: 0; bottom: 0; height: 100vh !important;'
+      const dialogRef = this.dialog.open(DialogEditThreadCommentComponent);
+      dialogRef.componentInstance.input = content;
+      dialogRef.componentInstance.editLocation = location;
+      dialogRef.componentInstance.thread = thread;
+      dialogRef.componentInstance.index = index;
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('content:', content);
-    });
+      let element: any = document.querySelector('.cdk-overlay-container');
+      element.style = 'width: 30%; left: unset; right: 0; bottom: 0; height: 100vh !important;'
+
+      dialogRef.afterClosed().subscribe((result) => {
+        console.log('content:', content);
+        this.globalV.setEditor(false);
+      });
+    }
+    else {
+      alert('First finish editing your thread');
+    }
   }
 
   // add reaction
   addEmoji(index: number, reaction: string) {
-    if(index < 0) {
+    if (index < 0) {
       this.threadContent.reactions = reaction;
     } else {
       this.threadContent.comments[index].reactions = reaction;
