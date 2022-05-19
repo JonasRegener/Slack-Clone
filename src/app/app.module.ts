@@ -45,7 +45,7 @@ import { DialogDeleteThreadComponent } from './dialog-delete-thread/dialog-delet
 import { DialogDeleteCommentComponent } from './dialog-delete-comment/dialog-delete-comment.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import { MessageFieldPrivateComponent } from './message-field-private/message-field-private.component';
-
+import { AuthGuard } from './authentication/guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -114,7 +114,7 @@ import { MessageFieldPrivateComponent } from './message-field-private/message-fi
       },
     }),
   ],
-  providers: [AuthService],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

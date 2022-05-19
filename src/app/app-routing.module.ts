@@ -13,16 +13,18 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MessagingComponent } from './messaging/messaging.component';
 
 const routes: Routes = [
-  { path: '', component: SignInComponent },
-  { path: 'sign-up', component: SignUpComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'verify-email', component: VerifyEmailComponent },
-  { path: 'loading-screen', component: LoadingScreenComponent },
-  { path: 'channels', component: ChatFieldComponent }, 
-  { path: 'header', component: HeaderComponent },
-  { path: 'sidebar', component: SidebarComponent },
-  { path: 'messaging', component: MessagingComponent }
+  {path: '', canActivate:[AuthGuard], children: [
+    { path: '', component: SignInComponent },
+    { path: 'sign-up', component: SignUpComponent },
+    { path: 'dashboard', component: DashboardComponent },
+    { path: 'forgot-password', component: ForgotPasswordComponent },
+    { path: 'verify-email', component: VerifyEmailComponent },
+    { path: 'loading-screen', component: LoadingScreenComponent },
+    { path: 'channels', component: ChatFieldComponent }, 
+    { path: 'header', component: HeaderComponent },
+    { path: 'sidebar', component: SidebarComponent },
+    { path: 'messaging', component: MessagingComponent }
+  ]}
 ];
 
 @NgModule({

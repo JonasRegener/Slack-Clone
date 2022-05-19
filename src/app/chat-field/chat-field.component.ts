@@ -33,6 +33,8 @@ export class ChatFieldComponent implements OnInit {
         this.channelContent = result;
         setTimeout(() => {
           this.loading = false;
+          console.log(new Date(this.channelContent[0].postedAt));
+          
         }, 3000);
       })
     })
@@ -40,6 +42,12 @@ export class ChatFieldComponent implements OnInit {
     this.globalV.getThreadView().subscribe(item => {
       this.threadView = item;      
     })
+  }
+
+  get sortChannel() {
+    return this.channelContent.sort((a: any, b: any) => {
+      return <any>new Date(b.postedAt) - <any>new Date(a.postedAt);
+    });
   }
 
   // Open message field for editing
