@@ -64,7 +64,12 @@ export class ChatFieldComponent implements OnInit {
     // dialogRef.componentInstance.threadView = this.threadView;
 
     let element: any = document.querySelector('.cdk-overlay-container');
-    element.style = 'width: 100%;';
+    if(this.threadView){
+      element.style = 'width: 55%; left: 15%; right: 30%;';
+    } 
+    if(!this.threadView){
+      element.style = 'width: 85%; left: 15%;';
+    }
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('content:', content);

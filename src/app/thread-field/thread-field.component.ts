@@ -77,7 +77,7 @@ export class ThreadFieldComponent implements OnInit {
     dialogRef.componentInstance.index = index;
 
     let element: any = document.querySelector('.cdk-overlay-container');
-    element.style = 'width: 30%; left: unset; right: 0;'
+    element.style = 'width: 30%; left: unset; right: 0; bottom: 0; height: 100vh !important;'
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('content:', content);
