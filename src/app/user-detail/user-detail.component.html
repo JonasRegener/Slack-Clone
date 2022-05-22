@@ -1,15 +1,13 @@
-<mat-card>
-    <p>user-detail works!</p>
-    <p *ngIf="authService.userData as user">
+<mat-card class="user-detail-card" *ngIf="authService.userData as user">
+    <mat-card-title>{{(user.displayName) ? user.displayName : 'Kein Name vorhanden'}}</mat-card-title>
+    <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+    <mat-card-content><img mat-card-image src="{{(user.photoURL) ? user.photoURL : ''}}" alt="Profilbild">
 
-        Hallo <br>
-        {{ user.photoURL }}
-
-        <b> {{(user.displayName) ? user.displayName : 'Kein Name vorhanden'}} </b> <br>
-        {{ user.email }} <br>
-        {{ user.emailVerified }}
-        
-    </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="authService.SignOut()" *ngIf="authService.userData as user"
+            matTooltip="Klicke hier um dich auszuloggen">Ausloggen</button>
+        <button mat-button routerLinkActive="router-link-active" routerLink="/channels/{{ channel }}"> Zurück zu den
+            Channels </button>
+    </mat-card-actions>
 </mat-card>
-
-<div routerLinkActive="router-link-active" routerLink="/channels/{{ channel }}"> Zurück zu den Channels </div>

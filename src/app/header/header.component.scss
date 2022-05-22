@@ -16,6 +16,11 @@ mat-toolbar-row {
     position: absolute;
     right: 16px;
     top: 16px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100px;
+    justify-content: end;
 }
 
 mat-form-field {
