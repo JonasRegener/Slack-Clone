@@ -6,7 +6,7 @@
 
 
     <mat-list-option *ngFor="let channels of allChannels">
-        <p routerLink="/channels/{{ channels['name'] }}" (click)="setChatVar(channels['name'])" > {{ channels['name']
+        <p routerLink="/channels/{{ channels['name'] }}" (click)="setChatVar(channels['name'])"> {{ channels['name']
             }}</p>
     </mat-list-option>
     <button mat-icon-button color="primary" class="ml-16" aria-label="Example icon-button with a heart icon">New private
@@ -17,8 +17,9 @@
         <p routerLink="/messaging/{{messages['customIdName']}}" (click)="setMessageVar(messages['customIdName'])">
             {{ messages['customIdName'] }}</p>
     </mat-list-option>
-    <div>
-        <p>  Option selected: {{ test }} </p>
+    <div class="selected-option">
+        <p>
+            {{ test }} </p>
     </div>
 
 

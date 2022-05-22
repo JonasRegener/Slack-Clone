@@ -1,13 +1,15 @@
 .sidebar-toolbar {
     height: 90vh;
+    width: 15vw;
     background-color: var(--lightPurple);
+
     p {
         color: white;
-        
+
     }
 }
 
-.ml-16{
+.ml-16 {
     margin-left: 16px;
 }
 
@@ -16,5 +18,20 @@ mat-list-item {
 
     &:hover {
         background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.selected-option {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    bottom: 16px;
+    left: 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 16px;
+    width: 14vw;
+
+    p {
+        font-size: larger;
     }
 }
