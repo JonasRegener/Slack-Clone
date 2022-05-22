@@ -9,7 +9,7 @@
                 <img [src]=threadContent.userPhotoURL>
             </div>
             <div class="full-width">
-                <span class="displayName">{{ threadContent.userName }} <span class="postedAt">{{ threadContent.postedAt }}</span></span>
+                <span class="displayName">{{ threadContent.userName }} <span class="postedAt">{{ convertToDate(threadContent.postedAt) }}</span></span>
                 <div>
                     <div id="content-{{ 0 }}" class="content full-width" [innerHTML]="threadContent.content"></div>
                 </div>

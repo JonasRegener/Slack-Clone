@@ -5,6 +5,7 @@ import { DialogEditMessageComponent } from '../dialog-edit-message/dialog-edit-m
 import { GlobalVariablesService } from '../global-variables.service';
 import { Observable, Subject } from 'rxjs';
 import { DialogDeleteThreadComponent } from '../dialog-delete-thread/dialog-delete-thread.component';
+import { DialogChannelInfoComponent } from '../dialog-channel-info/dialog-channel-info.component';
 @Component({
   selector: 'app-chat-field',
   templateUrl: './chat-field.component.html',
@@ -12,7 +13,7 @@ import { DialogDeleteThreadComponent } from '../dialog-delete-thread/dialog-dele
 })
 export class ChatFieldComponent implements OnInit {
 
-  loading = true;
+  loading = false;
   threadView = false;
   disabled = true;
   loggedIn = 'Alexander Baraev';
@@ -28,16 +29,15 @@ export class ChatFieldComponent implements OnInit {
     this.globalV.getChannel().subscribe(value => {
       this.currentChannel = value;
       this.firestore
-      .collection('channels/' + this.currentChannel + '/threads')
-      .valueChanges({ idField: 'customIdName' })
-      .subscribe((result) => {
-        this.channelContent = result;
-        setTimeout(() => {
-          this.loading = false;
-          console.log(new Date(this.channelContent[0].postedAt));
-          
-        }, 3000);
-      })
+        .collection('channels/' + this.currentChannel + '/threads')
+        .valueChanges({ idField: 'customIdName' })
+        .subscribe((result) => {
+          this.channelContent = result;
+          setTimeout(() => {
+            this.loading = false;
+            console.log(new Date(this.channelContent[0].postedAt));
+          }, 3000);
+        })
     })
 
     this.globalV.getThreadView().subscribe(item => {
@@ -65,10 +65,8 @@ export class ChatFieldComponent implements OnInit {
     if(!this.editorOpened) {
       this.globalV.setEditor(true);
       const dialogRef = this.dialog.open(DialogEditMessageComponent);
-      console.log('unten');
   
       dialogRef.componentInstance.input = content;
-      // dialogRef.componentInstance.threadView = this.threadView;
   
       let element: any = document.querySelector('.cdk-overlay-container');
       if(this.threadView){
@@ -85,7 +83,15 @@ export class ChatFieldComponent implements OnInit {
     else {
       alert('First finish editing your comment');
     }
+  }
 
+  openChannelInfo() {
+    const dialogRef = this.dialog.open(DialogChannelInfoComponent);
+
+
+    dialogRef.afterClosed().subscribe((result) => {
+      
+    });
   }
 
   // add reaction
