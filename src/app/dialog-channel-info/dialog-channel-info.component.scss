@@ -1,0 +1,23 @@
+::ng-deep  .mat-dialog-container {
+    height: 500px !important;
+    width: 500px !important;
+    overflow: unset !important;
+}
+
+.profile-card {
+    display: flex;
+    height: 50px;
+    width: 100%;;
+
+    img {
+        height: 40px;
+        width: 40px;
+        object-fit: cover;
+    }
+
+    button {
+        font-size: 12px;
+        background-color: transparent !important;
+        border: none !important;
+    }
+}

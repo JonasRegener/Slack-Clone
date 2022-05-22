@@ -64,17 +64,9 @@ export class ChatFieldComponent implements OnInit {
     if (!this.editorOpened) {
       this.globalV.setEditor(true);
       const dialogRef = this.dialog.open(DialogEditMessageComponent);
-<<<<<<< HEAD
-      console.log('unten');
-
-      dialogRef.componentInstance.input = content;
-      // dialogRef.componentInstance.threadView = this.threadView;
-
-=======
   
       dialogRef.componentInstance.input = content;
   
->>>>>>> a9680e4179b5c454e6b3357daeccebed26df117a
       let element: any = document.querySelector('.cdk-overlay-container');
       if (this.threadView) {
         element.style = 'width: 55%; left: 15%; right: 30%;';
