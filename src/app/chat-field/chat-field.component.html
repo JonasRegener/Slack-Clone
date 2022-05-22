@@ -2,7 +2,16 @@
 
 <div class="screen-field row">
     <div class="channel-field" [class.show-thread-field]="threadView">
-        <header *ngIf="!loading">{{ currentChannel }}</header>
+        <header *ngIf="!loading">
+            {{ currentChannel }}
+            <div class="channel-info" (click)="openChannelInfo()">
+                <img class="profile p1" src="assets/img/profileAlex.jpg">
+                <img class="profile p2" src="assets/img/profile.png">
+                <img class="profile p3" src="assets/img/profileMario.jfif">
+                <!-- <div>{{ currentChannel.members.length }}</div> -->
+                <div>3</div>
+            </div>
+        </header>
         <div class="content-field" *ngIf="channelContent && !loading">
             <div class="content-entry" *ngFor="let content of sortChannel; let i = index">
                 <div>

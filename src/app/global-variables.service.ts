@@ -53,13 +53,13 @@ export class GlobalVariablesService {
     this.channelSelect.next(string);
   }
 
-    // --- Getter and setter for editorActive ---
-    getEditor(): Observable<boolean> {
-      return this.editorActive.asObservable();
-    }
-    setEditor(boolValue: boolean): void {
-      this.editorActive.next(boolValue);
-    }
+  // --- Getter and setter for editorActive ---
+  getEditor(): Observable<boolean> {
+    return this.editorActive.asObservable();
+  }
+  setEditor(boolValue: boolean): void {
+    this.editorActive.next(boolValue);
+  }
 
 
 

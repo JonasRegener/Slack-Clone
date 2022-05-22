@@ -49,6 +49,7 @@ import { AuthGuard } from './authentication/guard/auth.guard';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { NewChannelComponent } from './new-channel/new-channel.component';
 import { MatCardModule } from '@angular/material/card';
+import { DialogChannelInfoComponent } from './dialog-channel-info/dialog-channel-info.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { MatCardModule } from '@angular/material/card';
     MessagingComponent,
     MessageFieldPrivateComponent,
     UserDetailComponent,
-    NewChannelComponent
+    NewChannelComponent,
+    DialogChannelInfoComponent
   ],
   imports: [
     BrowserModule,

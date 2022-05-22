@@ -8,7 +8,7 @@ header {
     align-items: center;
     padding-left: 24px;
     justify-content: flex-start !important;
-
+    position: relative;
 }
 
 .content-entry {
@@ -26,7 +26,7 @@ header {
     }
 
     &:hover {
-        background-color: rgba(0,0,0,0.05)
+        background-color: rgba(0, 0, 0, 0.05);
     }
 
     &:hover .reaction-bar {
@@ -58,7 +58,7 @@ header {
     position: absolute;
     top: 0;
     right: 16px;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     align-items: center;
     padding-left: 8px;
@@ -77,7 +77,7 @@ header {
         border-radius: 4px;
 
         &:hover {
-            background-color: rgba(0,0,0,0.05);
+            background-color: rgba(0, 0, 0, 0.05);
         }
     }
 
@@ -90,11 +90,9 @@ header {
         justify-content: center;
         border-radius: 4px;
 
-
         &:hover {
-            background-color: rgba(0,0,0,0.05);
+            background-color: rgba(0, 0, 0, 0.05);
         }
-    
     }
 }
 
@@ -110,7 +108,7 @@ header {
 
 .cancel-edit-btn {
     position: absolute;
-    bottom: 0; 
+    bottom: 0;
     right: 0;
 }
 
@@ -142,7 +140,7 @@ header {
     height: 90vh !important;
     width: 85vw;
     box-sizing: border-box;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .message-field-thread-position {
@@ -153,11 +151,59 @@ header {
 }
 
 .show-thread-field {
-    width:55vw !important;
+    width: 55vw !important;
 }
 
-.border-left{
+.border-left {
     border-left: 1px solid lightgray;
     height: 100vh;
     width: 30vw !important;
+}
+
+.channel-info {
+    position: absolute;
+    top: 10px;
+    right: 24px;
+    width: 110px;
+    height: 30px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        cursor: pointer;
+    }
+
+    div {
+        position: absolute;
+        top: 0;
+        right: 12px;;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .profile {
+        height: 26px;
+        width: 26px;
+        border-radius: 100%;
+        position: absolute;
+        object-fit: cover;
+        top: 2px;
+        box-sizing: border-box;
+        padding: 1px;
+        background-color: lightgray;
+    }
+
+    .p1 {
+        left: 4px;
+    }
+
+    .p2 {
+        left: 20px;
+    }
+
+    .p3 {
+        left: 36px;
+    }
 }
