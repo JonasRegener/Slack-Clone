@@ -5,6 +5,9 @@
         <li *ngFor="let channels of allChannels">
             <a (click)="setChatVar(channels['name'])"> {{ channels['name'] }}</a>
         </li>
+        <li *ngFor="let messages of allMessages">
+            <a (click)="setChatVar(messages['receiverUID'])"> {{ messages['receiverUID'] }}</a>
+        </li>
     </ul>
 
 

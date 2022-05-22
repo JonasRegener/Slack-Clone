@@ -13,7 +13,7 @@ import { DialogChannelInfoComponent } from '../dialog-channel-info/dialog-channe
 })
 export class ChatFieldComponent implements OnInit {
 
-  loading = false;
+  loading = true;
   threadView = false;
   disabled = true;
   loggedIn = 'Alexander Baraev';

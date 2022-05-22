@@ -26,6 +26,7 @@ export class SidebarComponent implements OnInit {
         this.allChannels = changes;
         this.getMessages();
         this.selectedChat = this.allChannels[0]['name'];
+        this.globalV.setChannel(this.selectedChat);
         console.log('Messages are found', this.allChannels[0]['name']);
       });
   }
