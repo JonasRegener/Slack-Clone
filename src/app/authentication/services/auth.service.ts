@@ -8,16 +8,19 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { User } from './user.service';
+import { GlobalVariablesService } from 'src/app/global-variables.service';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   userData: any; // Save logged in user data
+  channel!: string;
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    public globalV: GlobalVariablesService
   ) {
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -31,6 +34,10 @@ export class AuthService {
         JSON.parse(localStorage.getItem('user')!);
       }
     });
+
+    this.globalV.getChannel().subscribe(value => {
+      this.channel = value;
+    })
   }
   // Sign in with email/password
   SignIn(email: string, password: string) {
@@ -38,7 +45,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['channels']);
+          this.router.navigate(['channels/' + this.channel]);
         });
         this.SetUserData(result.user);
       })

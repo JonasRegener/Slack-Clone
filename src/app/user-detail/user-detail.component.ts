@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { stringify } from 'querystring';
 import { AuthService } from '../authentication/services/auth.service';
 import { UserService } from '../authentication/services/user.service';
+import { GlobalVariablesService } from '../global-variables.service';
 
 
 @Component({
@@ -14,9 +15,9 @@ import { UserService } from '../authentication/services/user.service';
 })
 export class UserDetailComponent implements OnInit {
 
+  channel!: string;
 
-
-  constructor(private firestore: AngularFirestore, public authService: AuthService, public auth: AngularFireAuth, public UserService: UserService, private route: ActivatedRoute) { }
+  constructor(private firestore: AngularFirestore, public authService: AuthService, public auth: AngularFireAuth, public UserService: UserService, private route: ActivatedRoute, public globalV: GlobalVariablesService) { }
   bankName = '';
   mussfunktionieren: any = {};
   ngOnInit(): void {
@@ -25,6 +26,11 @@ export class UserDetailComponent implements OnInit {
       console.log('Got it ', this.bankName)
       this.getUser();
     })
+
+    this.globalV.getChannel().subscribe(value => {
+      this.channel = value;
+    })
+
   }
 
   getUser() {
