@@ -21,10 +21,10 @@ const routes: Routes = [
     { path: 'verify-email', component: VerifyEmailComponent },
     { path: 'loading-screen', component: LoadingScreenComponent, canActivate:[AuthGuard] },
     { path: 'user-detail/:id', component: UserDetailComponent, canActivate:[AuthGuard] },
-    { path: 'channels', component: ChatFieldComponent, canActivate:[AuthGuard] }, 
+    { path: 'channels/:id', component: ChatFieldComponent, canActivate:[AuthGuard] }, 
     { path: 'header', component: HeaderComponent, canActivate:[AuthGuard] },
     { path: 'sidebar', component: SidebarComponent, canActivate:[AuthGuard] },
-    { path: 'messaging', component: MessagingComponent, canActivate:[AuthGuard] }
+    { path: 'messaging/:id', component: MessagingComponent, canActivate:[AuthGuard] }
 ];
 
 

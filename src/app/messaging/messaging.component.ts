@@ -17,27 +17,27 @@ export class MessagingComponent implements OnInit {
   loading = true;
   disabled = true;
   loggedIn = 'Alexander Baraev';
-  currentMessage = 'HTEeKWuco3CZLMJWWNgH';
+  currentMessage = '';
   channelContent: any;
   user: any;
 
-  constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService) { 
+  constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService) {
 
   }
 
   ngOnInit(): void {
 
-    // this.globalV.getChannel().subscribe(value => {
-    //   this.currentMessage = value;
+    this.globalV.getMessage().subscribe(value => {
+      this.currentMessage = value;
       this.firestore
-      .collection('messages')
-      .doc(this.currentMessage)
-      .valueChanges({ idField: 'customIdName' })
-      .subscribe((value) => {
-        this.channelContent = value;
-        this.loading = false;
-      })
-    // })
+        .collection('messages')
+        .doc(this.currentMessage)
+        .valueChanges({ idField: 'customIdName' })
+        .subscribe((value) => {
+          this.channelContent = value;
+          this.loading = false;
+        })
+    })
 
   }
 

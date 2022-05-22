@@ -11,6 +11,8 @@ export class GlobalVariablesService {
   public threadSelect!: BehaviorSubject<string>;
   public threadObject!: BehaviorSubject<object>;
   public channelSelect!: BehaviorSubject<string>;
+  public messageSelect!: BehaviorSubject<string>;
+
   public editorActive!: BehaviorSubject<boolean>;
 
   constructor() {
@@ -18,6 +20,7 @@ export class GlobalVariablesService {
     this.threadSelect = new BehaviorSubject<string>('');
     this.threadObject = new BehaviorSubject<object>({});
     this.channelSelect = new BehaviorSubject<string>('');
+    this.messageSelect = new BehaviorSubject<string>('');
     this.editorActive = new BehaviorSubject<boolean>(false);
   }
 
@@ -59,6 +62,14 @@ export class GlobalVariablesService {
   }
   setEditor(boolValue: boolean): void {
     this.editorActive.next(boolValue);
+  }
+
+  // --- Getter and setter for messageSelect ---
+  getMessage(): Observable<string> {
+    return this.messageSelect.asObservable();
+  }
+  setMessage(string: string): void {
+    this.messageSelect.next(string);
   }
 
 

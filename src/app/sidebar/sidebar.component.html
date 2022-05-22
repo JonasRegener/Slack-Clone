@@ -1,17 +1,13 @@
 <mat-toolbar class="sidebar-toolbar" color="primary">
 
-
     <ul>
         <li *ngFor="let channels of allChannels">
-            <a (click)="setChatVar(channels['name'])"> {{ channels['name'] }}</a>
+            <a routerLink="/channels/{{ channels['name'] }}" (click)="setChatVar(channels['name'])"> {{ channels['name'] }}</a>
         </li>
         <li *ngFor="let messages of allMessages">
-            <a (click)="setChatVar(messages['receiverUID'])"> {{ messages['receiverUID'] }}</a>
+            <a routerLink="/messaging/{{messages['customIdName']}}" (click)="setMessageVar(messages['customIdName'])"> {{ messages['customIdName'] }}</a>
         </li>
     </ul>
-
-
-
 
 
 </mat-toolbar>

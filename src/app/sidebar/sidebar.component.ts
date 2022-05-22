@@ -13,7 +13,7 @@ import { GlobalVariablesService } from '../global-variables.service';
 export class SidebarComponent implements OnInit {
   allChannels = [];
   allMessages = [];
-  selectedChat: string;
+  selectedChat!: string;
   channels = new channels;
   constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService) { }
 
@@ -33,7 +33,7 @@ export class SidebarComponent implements OnInit {
   getMessages() {
     this.firestore
       .collection('messages')
-      .valueChanges()
+      .valueChanges({ idField: 'customIdName' })
       .subscribe((changes: any) => {
         this.allMessages = changes;
       });
@@ -41,7 +41,13 @@ export class SidebarComponent implements OnInit {
 
   setChatVar(string: string) {
     this.globalV.setChannel(string);
+  }
 
+  
+  setMessageVar(string: string) {
+    this.globalV.setMessage(string);
+    console.log(string);
+    
   }
 
 }
