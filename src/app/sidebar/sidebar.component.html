@@ -1,23 +1,13 @@
 <mat-toolbar class="sidebar-toolbar" color="primary">
 
-    <mat-selection-list #channels [multiple]="false">
-        <button> Channel hinzufügen</button>
-        <div>
-            Channels
-        </div>
-        <mat-list-option *ngFor="let channels of allChannels" [value]="channels">
-            {{ channels['name'] }}
-        </mat-list-option><div>
-        <button> Neue Privatnachricht</button>
-    </div>
-        Private Messages
-        <mat-list-option *ngFor="let messages of allMessages" [value]="channels">
-            {{ messages['receiverUID'] }}
-        </mat-list-option>
-        <p>
-            Option selected: <br><b> {{channels.selectedOptions.selected[0]?.value}} Ergebnis </b>
-        </p>
-    </mat-selection-list>
+
+    <ul>
+        <li *ngFor="let channels of allChannels">
+            <a (click)="setChatVar(channels['name'])"> {{ channels['name'] }}</a>
+        </li>
+    </ul>
+
+
 
 
 

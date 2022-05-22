@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { channels } from '../models/channels.class';
 import { Firestore } from '@angular/fire/firestore';
+import { GlobalVariablesService } from '../global-variables.service';
 
 
 @Component({
@@ -10,11 +11,11 @@ import { Firestore } from '@angular/fire/firestore';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   allChannels = [];
   allMessages = [];
+  selectedChat: string;
   channels = new channels;
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService) { }
 
   ngOnInit(): void {
     this.firestore
@@ -24,6 +25,8 @@ export class SidebarComponent implements OnInit {
         console.log('Channels are found', changes);
         this.allChannels = changes;
         this.getMessages();
+        this.selectedChat = this.allChannels[0]['name'];
+        console.log('Messages are found', this.allChannels[0]['name']);
       });
   }
   getMessages() {
@@ -31,10 +34,13 @@ export class SidebarComponent implements OnInit {
       .collection('messages')
       .valueChanges()
       .subscribe((changes: any) => {
-        console.log('Messages are found', changes);
         this.allMessages = changes;
-    
       });
+  }
+
+  setChatVar(string: string) {
+    this.globalV.setChannel(string);
+
   }
 
 }

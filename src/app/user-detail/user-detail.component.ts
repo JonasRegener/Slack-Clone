@@ -22,7 +22,7 @@ export class UserDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.bankName = params['id'];
-      console.log('Got it ' + this.bankName)
+      console.log('Got it ', this.bankName)
       this.getUser();
     })
   }
@@ -35,7 +35,7 @@ export class UserDetailComponent implements OnInit {
       .subscribe((user: any) => {
         JSON.stringify(this.mussfunktionieren)
         this.mussfunktionieren = user;
-        console.log('Erhalten ' + JSON.stringify(this.mussfunktionieren))
+        console.log('Erhalten', this.mussfunktionieren)
 
       })
   }

@@ -12,8 +12,7 @@ export class AppComponent {
 
 
   constructor(public router: Router, public globalV: GlobalVariablesService) {
-    this.globalV.setChannel('testChannel2');    
-   }
+  }
 
   isLoggedIn() {
     return this.router.url !== '/';

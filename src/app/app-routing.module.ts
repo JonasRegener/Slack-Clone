@@ -20,6 +20,7 @@ const routes: Routes = [
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'verify-email', component: VerifyEmailComponent },
     { path: 'loading-screen', component: LoadingScreenComponent, canActivate:[AuthGuard] },
+    { path: 'user-detail/:id', component: UserDetailComponent, canActivate:[AuthGuard] },
     { path: 'channels', component: ChatFieldComponent, canActivate:[AuthGuard] }, 
     { path: 'header', component: HeaderComponent, canActivate:[AuthGuard] },
     { path: 'sidebar', component: SidebarComponent, canActivate:[AuthGuard] },
