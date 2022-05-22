@@ -1,4 +1,20 @@
 .sidebar-toolbar {
     height: 90vh;
     background-color: var(--lightPurple);
+    p {
+        color: white;
+        
+    }
+}
+
+.ml-16{
+    margin-left: 16px;
+}
+
+mat-list-item {
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 }

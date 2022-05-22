@@ -1,13 +1,26 @@
-<mat-toolbar class="sidebar-toolbar" color="primary">
-
-    <ul>
-        <li *ngFor="let channels of allChannels">
-            <a routerLink="/channels/{{ channels['name'] }}" (click)="setChatVar(channels['name'])"> {{ channels['name'] }}</a>
-        </li>
-        <li *ngFor="let messages of allMessages">
-            <a routerLink="/messaging/{{messages['customIdName']}}" (click)="setMessageVar(messages['customIdName'])"> {{ messages['customIdName'] }}</a>
-        </li>
-    </ul>
+<mat-selection-list class="sidebar-toolbar" color="primary" [multiple]="false">
+    <button mat-icon-button color="primary" class="ml-16" aria-label="Example icon-button with a heart icon">Create new
+        Channel
+        <mat-icon>add</mat-icon>
+    </button>
 
 
-</mat-toolbar>
+    <mat-list-option *ngFor="let channels of allChannels">
+        <p routerLink="/channels/{{ channels['name'] }}" (click)="setChatVar(channels['name'])" > {{ channels['name']
+            }}</p>
+    </mat-list-option>
+    <button mat-icon-button color="primary" class="ml-16" aria-label="Example icon-button with a heart icon">New private
+        Message
+        <mat-icon>add</mat-icon>
+    </button>
+    <mat-list-option *ngFor="let messages of allMessages">
+        <p routerLink="/messaging/{{messages['customIdName']}}" (click)="setMessageVar(messages['customIdName'])">
+            {{ messages['customIdName'] }}</p>
+    </mat-list-option>
+    <div>
+        <p>  Option selected: {{ test }} </p>
+    </div>
+
+
+
+</mat-selection-list>
