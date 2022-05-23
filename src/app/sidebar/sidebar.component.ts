@@ -5,6 +5,7 @@ import { Firestore } from '@angular/fire/firestore';
 import { GlobalVariablesService } from '../global-variables.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCreateMessageComponent } from '../dialog-create-message/dialog-create-message.component';
+import { NewChannelComponent } from '../new-channel/new-channel.component';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class SidebarComponent implements OnInit {
   allChannels = [];
   allMessages = [];
   user: any;
+  newChannelname = '';
   userDB: any;
   test ='';
   selectedChat!: string;
@@ -80,5 +82,11 @@ export class SidebarComponent implements OnInit {
     });
   }
 
+  createNewChannel() {
+    const dialogRef = this.dialog.open(NewChannelComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+    });
+  }
 
 }

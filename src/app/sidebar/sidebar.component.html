@@ -1,5 +1,5 @@
 <mat-selection-list class="sidebar-toolbar" color="primary" [multiple]="false" *ngIf="userDB">
-    <button mat-icon-button color="primary" class="ml-16 add-channel-button">Create new
+    <button mat-icon-button color="primary" class="ml-16 add-channel-button" (click)="createNewChannel()">Create new
         Channel
         <mat-icon>add</mat-icon>
     </button>
