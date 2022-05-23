@@ -63,10 +63,11 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
       .doc(this.user.uid)
       .valueChanges()
       .subscribe((result: any) => {
-        this.loggedIn = result;
-        if(result) {
-          this.loggedInUser = new LoggedInUser(result.displayName, result.photoURL)
-        }
+          if(result) {
+            console.log(result);
+
+            this.loggedInUser = new LoggedInUser(result.displayName, result.photoURL)
+          }
       })
   }
 
