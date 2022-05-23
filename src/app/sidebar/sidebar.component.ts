@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
   allChannels = [];
   allMessages = [];
   user: any;
+  userDB: any;
   test ='';
   selectedChat!: string;
   channels = new channels;
@@ -32,6 +33,13 @@ export class SidebarComponent implements OnInit {
         this.globalV.setChannel(this.selectedChat);
         console.log('Messages are found', this.allChannels[0]['name']);
       });
+
+      this.firestore
+      .collection('users')
+      .valueChanges()
+      .subscribe((result: any) => {
+          this.userDB = result;    
+      })
   }
   getMessages() {
     this.firestore
@@ -41,6 +49,15 @@ export class SidebarComponent implements OnInit {
         this.allMessages = changes;
       });
   }
+
+  getReceiverName(receiverUID: string){
+    for(let i = 0; i < this.userDB.length; i++) {
+      if(this.userDB[i].uid == receiverUID){
+        return this.userDB[i].displayName;
+      }
+    }    
+  }
+
 
   setChatVar(string: string) {
     this.globalV.setChannel(string);

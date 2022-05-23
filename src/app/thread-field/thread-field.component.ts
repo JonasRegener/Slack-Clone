@@ -39,17 +39,7 @@ export class ThreadFieldComponent implements OnInit {
     // this.threadSelected = this.globalV.getThread();
     // console.log('selected:',this.globalV.getThread());
 
-    this.globalV.getThread().subscribe(item => {
-      this.threadSelected = item;
-      this.firestore.collection('channels/' + this.currentChannel + '/threads/')
-        .doc(item)
-        .valueChanges({ idField: 'customIdName' })
-        .subscribe((result) => {
-          this.threadContent = result;
-          console.log('selected: ', this.threadSelected);
-        })
-    });
-
+    
     this.globalV.getThreadView().subscribe(item => {
       this.threadView = item;
     })
@@ -57,6 +47,24 @@ export class ThreadFieldComponent implements OnInit {
     this.globalV.getEditor().subscribe(item => {
       this.editorOpened = item;
     })
+
+    this.globalV.getChannel().subscribe(value => {
+      this.currentChannel = value;
+    })
+
+    this.globalV.getThread().subscribe(item => {
+      if (item) {
+        this.threadSelected = item;
+        this.firestore.collection('channels/' + this.currentChannel + '/threads/')
+          .doc(item)
+          .valueChanges({ idField: 'customIdName' })
+          .subscribe((result) => {
+            this.threadContent = result;
+            console.log('selected: ', this.threadSelected);
+          })
+      }
+    });
+
 
   }
 

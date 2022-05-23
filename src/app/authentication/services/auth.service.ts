@@ -24,9 +24,15 @@ export class AuthService {
   ) {
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
+
+    this.globalV.getChannel().subscribe(value => {
+      this.channel = value;
+    })
+
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
+        this.globalV.setUser(user);        
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
       } else {
@@ -35,9 +41,7 @@ export class AuthService {
       }
     });
 
-    this.globalV.getChannel().subscribe(value => {
-      this.channel = value;
-    })
+    
   }
   // Sign in with email/password
   SignIn(email: string, password: string) {

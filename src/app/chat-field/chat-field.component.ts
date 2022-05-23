@@ -21,32 +21,18 @@ export class ChatFieldComponent implements OnInit {
   currentChannel = '';
   channelContent: any;
   editorOpened = false;
+  user: any;
 
   constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService) { }
 
   ngOnInit(): void {
     // ------ load all Channel entries from firebase ------
 
-    this.globalV.getChannel().subscribe(value => {
-      this.currentChannel = value;
-      this.firestore
-        .collection('channels/' + this.currentChannel + '/threads')
-        .valueChanges({ idField: 'customIdName' })
-        .subscribe((result) => {
-          this.channelContent = result;
-          setTimeout(() => {
-            this.loading = false;
-          }, 3000);
-        })
+
+    this.globalV.getUser().subscribe(user => {
+      this.user = user;
     })
 
-    let user: any = window.localStorage.getItem('user');
-    user = JSON.parse(user);
-    console.log(user);
-    
-    
-    
-    
 
     this.globalV.getThreadView().subscribe(item => {
       this.threadView = item;
@@ -55,6 +41,32 @@ export class ChatFieldComponent implements OnInit {
     this.globalV.getEditor().subscribe(item => {
       this.editorOpened = item;
     })
+
+    this.globalV.getChannel().subscribe(value => {
+      if (value) {
+        this.currentChannel = value;
+        this.firestore
+          .collection('channels/' + this.currentChannel + '/threads')
+          .valueChanges({ idField: 'customIdName' })
+          .subscribe((result) => {
+            this.channelContent = result;
+            setTimeout(() => {
+              this.loading = false;
+              this.getUserName();
+            }, 3000);
+          })
+      }
+    })
+  }
+
+  getUserName() {
+    this.firestore
+      .collection('users')
+      .doc(this.user.uid)
+      .valueChanges()
+      .subscribe((result: any) => {
+        this.loggedIn = result.displayName;
+      })
   }
 
   get sortChannel() {
@@ -73,9 +85,9 @@ export class ChatFieldComponent implements OnInit {
     if (!this.editorOpened) {
       this.globalV.setEditor(true);
       const dialogRef = this.dialog.open(DialogEditMessageComponent);
-  
+
       dialogRef.componentInstance.input = content;
-  
+
       let element: any = document.querySelector('.cdk-overlay-container');
       if (this.threadView) {
         element.style = 'width: 55%; left: 15%; right: 30%;';
@@ -98,7 +110,7 @@ export class ChatFieldComponent implements OnInit {
 
 
     dialogRef.afterClosed().subscribe((result) => {
-      
+
     });
   }
 

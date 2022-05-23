@@ -32,20 +32,25 @@ export class MessageFieldThreadComponent implements OnInit {
   });
 
   loggedInUser: any;
+  loggedIn: any;
   content: any;
-  currentChannel = 'testChannel2';
+  currentChannel = '';
   entry: any;
   threadSelected: string = '';
   threadObject: any;
+  user: any;
+
 
   constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService) {
-    this.loggedInUser = new LoggedInUser('Alexander Baraev', 'assets/img/profileAlex.jpg')
   }
 
   ngOnInit(): void {
     this.editor = new Editor();
 
-    
+    this.globalV.getChannel().subscribe(result => {
+      this.currentChannel = result;
+    })
+
     this.globalV.getObject().subscribe(item => {
       this.threadObject = item;
     });
@@ -54,7 +59,24 @@ export class MessageFieldThreadComponent implements OnInit {
       this.threadSelected = item;
     });
 
+    this.globalV.getUser().subscribe(user => {
+      this.user = user;
+      this.getUserName();
+    })
 
+  }
+
+  getUserName() {
+    this.firestore
+      .collection('users')
+      .doc(this.user.uid)
+      .valueChanges()
+      .subscribe((result: any) => {
+        this.loggedIn = result;
+        if(this.loggedIn.displayName && this.loggedIn.photoURL) {
+          this.loggedInUser = new LoggedInUser(this.loggedIn.displayName, this.loggedIn.photoURL)
+        }
+      })
   }
 
   ngOnDestroy(): void {

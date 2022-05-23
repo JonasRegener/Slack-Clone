@@ -4,6 +4,7 @@ import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { Validators, Editor, Toolbar } from 'ngx-editor';
 import { toHTML } from 'ngx-editor';
 import { toDoc } from 'ngx-editor';
+import { GlobalVariablesService } from '../global-variables.service';
 import { ChannelEntry } from '../models/channelEntry.class';
 import { ChannelEntryContent } from '../models/channelEntryContent.class';
 import { LoggedInUser } from '../models/loggedInUser.class';
@@ -32,17 +33,41 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
   });
 
   loggedInUser: any;
+  loggedIn: any;
   content: any;
-  currentChannel = 'testChannel2';
+  currentChannel = '';
   entry: any;
+  user: any;
 
-  constructor(private firestore: AngularFirestore) {
-    this.loggedInUser = new LoggedInUser('Alexander Baraev', 'assets/img/profileAlex.jpg')
-    console.log('show user:', this.loggedInUser);
+  constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService) {
+
   }
 
   ngOnInit(): void {
+
+    this.globalV.getUser().subscribe(user => {
+      this.user = user;
+      this.getUserName();
+    })
+
+    this.globalV.getChannel().subscribe(result => {
+      this.currentChannel = result;
+    })
+
     this.editor = new Editor();
+  }
+
+  getUserName() {
+    this.firestore
+      .collection('users')
+      .doc(this.user.uid)
+      .valueChanges()
+      .subscribe((result: any) => {
+        this.loggedIn = result;
+        if(result) {
+          this.loggedInUser = new LoggedInUser(result.displayName, result.photoURL)
+        }
+      })
   }
 
   ngOnDestroy(): void {
