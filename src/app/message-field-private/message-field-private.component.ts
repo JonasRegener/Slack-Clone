@@ -43,25 +43,30 @@ export class MessageFieldPrivateComponent implements OnInit, OnDestroy, AfterVie
 
   constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService, private cd: ChangeDetectorRef) {
     
-    this.globalV.getMessage().subscribe(result => {
-      this.currentMessage = result;
-      this.getMessages();
-    })
+
   }
 
   ngOnInit(): void {
     this.editor = new Editor();
 
+    this.globalV.getMessage().subscribe(result => {
+      this.currentMessage = result;
+      this.getMessages();
+    })
 
-
+    this.globalV.getUser().subscribe(user => {
+      this.loggedInUser = user;
+    })
 
   }
+
+
 
   getMessages() {
     this.firestore
     .collection('messages')
     .doc(this.currentMessage)
-    .valueChanges()
+    .valueChanges({ idField: 'customIdName' })
     .subscribe((value) => {
       this.content = value;
     })
@@ -94,7 +99,7 @@ export class MessageFieldPrivateComponent implements OnInit, OnDestroy, AfterVie
     const today = new Date().getTime();
     let contentInput = this.form.controls['editorContent'].value;
     
-    this.sendMessage = new MessageForm('sentByUID', 'receiverUID', contentInput, today);
+    this.sendMessage = new MessageForm(this.loggedInUser.uid, 'receiverUID', contentInput, today);
     
     this.content.replies.push(this.sendMessage);
     

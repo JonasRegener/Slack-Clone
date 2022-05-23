@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
   test ='';
   selectedChat!: string;
   channels = new channels;
-  constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService, public dialog: MatDialog) { }
+  constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService, public dialog: MatDialog, private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.firestore
@@ -53,6 +53,7 @@ export class SidebarComponent implements OnInit {
       .subscribe((changes: any) => {
         this.allMessages = changes;
       });
+
   }
 
   getReceiverName(receiverUID: string){
@@ -67,12 +68,14 @@ export class SidebarComponent implements OnInit {
   setChatVar(string: string) {
     this.globalV.setChannel(string);
     this.test = string;
+
   }
 
   
   setMessageVar(string: string) {
     this.globalV.setMessage(string);
     this.test = string;
+
   }
 
   createMessage() {

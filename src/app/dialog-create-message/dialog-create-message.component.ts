@@ -13,9 +13,12 @@ import { MessageForm } from '../models/messageForm.class';
 })
 export class DialogCreateMessageComponent implements OnInit {
 
+  test = true;
   loggedIn: any;
   users: any;
+  messages: any;
   newMessage!: MessageForm;
+  openInNewChat = true;
 
   constructor(public dialogRef: MatDialogRef<DialogCreateMessageComponent>, private firestore: AngularFirestore, public globalV: GlobalVariablesService, public router: Router) { }
 
@@ -31,15 +34,21 @@ export class DialogCreateMessageComponent implements OnInit {
       .subscribe(result => {
         this.users = result;
       })
+
+    this.firestore
+      .collection('messages')
+      .valueChanges({ idField: 'customIdName' })
+      .subscribe(result => {
+        this.messages = result;
+      })
   }
 
-  openChat(userID: string){
-    console.log('receiverID:',userID);
-    console.log('sentBy:', this.loggedIn.uid);
+  openNewChat(userID: string) {
+
     const today = new Date().getTime();
 
     this.newMessage = new MessageForm(this.loggedIn.uid, userID, '', today);
-    
+
 
     this.firestore
       .collection('messages')
@@ -49,7 +58,25 @@ export class DialogCreateMessageComponent implements OnInit {
         this.globalV.setMessage(docRef.id);
         this.router.navigateByUrl('messaging/' + docRef.id);
       })
-    
+
+  }
+
+  checkIfExist(userID: string) {
+    for (let i = 0; i < this.messages.length; i++) {
+      if (userID == this.messages[i].receiverUID) {        
+        this.openExistingChat(this.messages[i].customIdName);
+        this.openInNewChat = false;
+      } 
+    }
+    if(this.openInNewChat){
+      this.openNewChat(userID);
+    }
+  }
+
+  openExistingChat(id: string){
+    this.dialogRef.close();
+    this.globalV.setMessage(id);
+    this.router.navigateByUrl('messaging/' + id);
   }
 
 }
