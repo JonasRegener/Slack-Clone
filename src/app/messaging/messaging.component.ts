@@ -19,11 +19,20 @@ export class MessagingComponent implements OnInit {
   disabled = true;
   loggedIn = 'Alexander Baraev';
   currentMessage = '';
+  displayName = '';
   channelContent: any;
   user: any;
+  userDB: any;
 
   constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService, private router: Router) {
     this.loadMessages();
+
+    this.firestore
+    .collection('users')
+    .valueChanges()
+    .subscribe((result: any) => {
+        this.userDB = result;    
+    })
 
   }
 
@@ -34,17 +43,41 @@ export class MessagingComponent implements OnInit {
         .collection('messages')
         .doc(this.currentMessage)
         .valueChanges({ idField: 'customIdName' })
-        .subscribe((value) => {
+        .subscribe((value: any) => {
           this.channelContent = value;
+          this.getReceiverName(value.receiverUID)
           this.loading = false;
         })
     })
   }
 
   ngOnInit(): void {
+  }
+  
+  getReceiverName(receiverUID: string){
+    for(let i = 0; i < this.userDB.length; i++) {
+      if(this.userDB[i].uid == receiverUID){
+         this.displayName = this.userDB[i].displayName;
+      }
+    }    
+  }
 
+  getSentByName(sentByUID: string) {
+    for(let i = 0; i < this.userDB.length; i++) {
+      if(this.userDB[i].uid == sentByUID){
+         return this.userDB[i].displayName;
+          
+      }
+    } 
+  }
 
-
+  getPhotoURL(sentByUID: string) {
+    for(let i = 0; i < this.userDB.length; i++) {
+      if(this.userDB[i].uid == sentByUID){
+         return this.userDB[i].photoURL;
+          
+      }
+    } 
   }
 
   get sortMessages() {

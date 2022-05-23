@@ -5,7 +5,7 @@
         <img [src]="user.photoURL">
         <span>{{ user.displayName }}</span>
     </div>
-    <button (click)="openChat(user.uid)"><mat-icon>chat</mat-icon></button>
+    <button (click)="checkIfExist(user.uid)"><mat-icon>chat</mat-icon></button>
 </div>
 <!-- <div class="profile-card">
     <div>
