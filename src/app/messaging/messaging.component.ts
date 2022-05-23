@@ -6,6 +6,7 @@ import { GlobalVariablesService } from '../global-variables.service';
 import { Observable, Subject } from 'rxjs';
 import { DialogDeleteThreadComponent } from '../dialog-delete-thread/dialog-delete-thread.component';
 import { AuthGuard } from '../authentication/guard/auth.guard';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-messaging',
@@ -14,19 +15,19 @@ import { AuthGuard } from '../authentication/guard/auth.guard';
 })
 export class MessagingComponent implements OnInit {
 
-  loading = true;
+  loading = false;
   disabled = true;
   loggedIn = 'Alexander Baraev';
   currentMessage = '';
   channelContent: any;
   user: any;
 
-  constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService) {
+  constructor(public dialog: MatDialog, private firestore: AngularFirestore, public globalV: GlobalVariablesService, private router: Router) {
+    this.loadMessages();
 
   }
 
-  ngOnInit(): void {
-
+  loadMessages(){
     this.globalV.getMessage().subscribe(value => {
       this.currentMessage = value;
       this.firestore
@@ -38,6 +39,11 @@ export class MessagingComponent implements OnInit {
           this.loading = false;
         })
     })
+  }
+
+  ngOnInit(): void {
+
+
 
   }
 

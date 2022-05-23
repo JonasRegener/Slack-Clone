@@ -41,10 +41,6 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService) {
 
-  }
-
-  ngOnInit(): void {
-
     this.globalV.getUser().subscribe(user => {
       this.user = user;
       this.getUserName();
@@ -53,6 +49,10 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
     this.globalV.getChannel().subscribe(result => {
       this.currentChannel = result;
     })
+  }
+
+  ngOnInit(): void {
+
 
     this.editor = new Editor();
   }
@@ -63,11 +63,11 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
       .doc(this.user.uid)
       .valueChanges()
       .subscribe((result: any) => {
-          if(result) {
-            console.log(result);
+        if (result) {
+          console.log(result);
 
-            this.loggedInUser = new LoggedInUser(result.displayName, result.photoURL)
-          }
+          this.loggedInUser = new LoggedInUser(result.displayName, result.photoURL)
+        }
       })
   }
 
@@ -95,7 +95,7 @@ export class MessageFieldComponent implements OnInit, OnDestroy, AfterViewInit {
     // const today = new Date().toLocaleString('en-GB', { timeZone: 'CET' });
     const today = new Date().getTime();
     let contentInput = this.form.controls['editorContent'].value;
-    
+
     this.content = new ChannelEntryContent(contentInput, today);
     this.entry = new ChannelEntry(this.loggedInUser, this.content);
     this.firestore

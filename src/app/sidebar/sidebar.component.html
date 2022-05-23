@@ -1,5 +1,5 @@
 <mat-selection-list class="sidebar-toolbar" color="primary" [multiple]="false" *ngIf="userDB">
-    <button mat-icon-button color="primary" class="ml-16 add-channel-button" aria-label="Example icon-button with a heart icon">Create new
+    <button mat-icon-button color="primary" class="ml-16 add-channel-button">Create new
         Channel
         <mat-icon>add</mat-icon>
     </button>
@@ -9,7 +9,7 @@
         <p routerLink="/channels/{{ channels['name'] }}" (click)="setChatVar(channels['name'])"> {{ channels['name']
             }}</p>
     </mat-list-option>
-    <button mat-icon-button color="primary" class="ml-16 add-channel-button" aria-label="Example icon-button with a heart icon">New private
+    <button mat-icon-button color="primary" class="ml-16 add-channel-button" (click)="createMessage()">New private
         Message
         <mat-icon>add</mat-icon>
     </button>

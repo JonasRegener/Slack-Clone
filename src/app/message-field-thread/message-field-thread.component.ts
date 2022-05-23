@@ -42,11 +42,7 @@ export class MessageFieldThreadComponent implements OnInit {
 
 
   constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService) {
-  }
-
-  ngOnInit(): void {
-    this.editor = new Editor();
-
+    
     this.globalV.getChannel().subscribe(result => {
       this.currentChannel = result;
     })
@@ -63,6 +59,11 @@ export class MessageFieldThreadComponent implements OnInit {
       this.user = user;
       this.getUserName();
     })
+  }
+
+  ngOnInit(): void {
+    this.editor = new Editor();
+
 
   }
 

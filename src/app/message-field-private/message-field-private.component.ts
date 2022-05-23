@@ -1,13 +1,14 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation, AfterViewInit, Input, ChangeDetectorRef } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { Validators, Editor, Toolbar } from 'ngx-editor';
 import { toHTML } from 'ngx-editor';
 import { toDoc } from 'ngx-editor';
+import { GlobalVariablesService } from '../global-variables.service';
 import { ChannelEntry } from '../models/channelEntry.class';
 import { ChannelEntryContent } from '../models/channelEntryContent.class';
 import { LoggedInUser } from '../models/loggedInUser.class';
-import { Message } from '../models/message.class';
+import { MessageForm } from '../models/messageForm.class';
 
 
 @Component({
@@ -36,25 +37,37 @@ export class MessageFieldPrivateComponent implements OnInit, OnDestroy, AfterVie
 
   loggedInUser: any;
   content: any;
-  currentMessage = 'HTEeKWuco3CZLMJWWNgH';
+  currentMessage = '';
   sendMessage: any;
+  user: any;
 
-  constructor(private firestore: AngularFirestore) {
-    this.loggedInUser = new LoggedInUser('Alexander Baraev', 'assets/img/profileAlex.jpg')
-    console.log('show user:', this.loggedInUser);
+  constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService, private cd: ChangeDetectorRef) {
+    
+    this.globalV.getMessage().subscribe(result => {
+      this.currentMessage = result;
+      this.getMessages();
+    })
   }
 
   ngOnInit(): void {
     this.editor = new Editor();
 
-    this.firestore
-      .collection('messages')
-      .doc(this.currentMessage)
-      .valueChanges()
-      .subscribe((value) => {
-        this.content = value;
-      })
+
+
+
   }
+
+  getMessages() {
+    this.firestore
+    .collection('messages')
+    .doc(this.currentMessage)
+    .valueChanges()
+    .subscribe((value) => {
+      this.content = value;
+    })
+  }
+
+
 
   ngOnDestroy(): void {
     this.editor.destroy();
@@ -81,7 +94,7 @@ export class MessageFieldPrivateComponent implements OnInit, OnDestroy, AfterVie
     const today = new Date().getTime();
     let contentInput = this.form.controls['editorContent'].value;
     
-    this.sendMessage = new Message('sentByUID', 'receiverUID', contentInput, today);
+    this.sendMessage = new MessageForm('sentByUID', 'receiverUID', contentInput, today);
     
     this.content.replies.push(this.sendMessage);
     

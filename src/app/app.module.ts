@@ -50,6 +50,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { NewChannelComponent } from './new-channel/new-channel.component';
 import { MatCardModule } from '@angular/material/card';
 import { DialogChannelInfoComponent } from './dialog-channel-info/dialog-channel-info.component';
+import { DialogCreateMessageComponent } from './dialog-create-message/dialog-create-message.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { DialogChannelInfoComponent } from './dialog-channel-info/dialog-channel
     MessageFieldPrivateComponent,
     UserDetailComponent,
     NewChannelComponent,
-    DialogChannelInfoComponent
+    DialogChannelInfoComponent,
+    DialogCreateMessageComponent
   ],
   imports: [
     BrowserModule,

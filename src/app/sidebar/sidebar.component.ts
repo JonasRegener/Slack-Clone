@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { channels } from '../models/channels.class';
 import { Firestore } from '@angular/fire/firestore';
 import { GlobalVariablesService } from '../global-variables.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogCreateMessageComponent } from '../dialog-create-message/dialog-create-message.component';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class SidebarComponent implements OnInit {
   test ='';
   selectedChat!: string;
   channels = new channels;
-  constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService) { }
+  constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.firestore
@@ -41,6 +43,7 @@ export class SidebarComponent implements OnInit {
           this.userDB = result;    
       })
   }
+
   getMessages() {
     this.firestore
       .collection('messages')
@@ -68,6 +71,13 @@ export class SidebarComponent implements OnInit {
   setMessageVar(string: string) {
     this.globalV.setMessage(string);
     this.test = string;
+  }
+
+  createMessage() {
+    const dialogRef = this.dialog.open(DialogCreateMessageComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+    });
   }
 
 

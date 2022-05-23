@@ -1,4 +1,4 @@
-export class Message {
+export class MessageForm {
     sentByUID!: string;
     receiverUID!: string;
     message!: string;

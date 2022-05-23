@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Your Contacts</h1>
+<button>X</button>
+<div class="profile-card" *ngFor="let user of users">
+    <div>
+        <img [src]="user.photoURL">
+        <span>{{ user.displayName }}</span>
+    </div>
+    <button (click)="openChat(user.uid)"><mat-icon>chat</mat-icon></button>
+</div>
+<!-- <div class="profile-card">
+    <div>
+        <img src="assets/img/profileMario.jfif">
+        <span>Mario Neubacher</span>
+    </div>
+    <button><mat-icon>chat</mat-icon></button>
+</div>
+<div class="profile-card">
+    <div>
+        <img src="assets/img/profile.png">
+        <span>Jonas Regener</span>
+    </div>
+    <button><mat-icon>chat</mat-icon></button>
+</div> -->
+<div mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close()">No Thanks</button>
+</div>
