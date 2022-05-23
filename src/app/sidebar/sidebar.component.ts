@@ -13,6 +13,7 @@ import { GlobalVariablesService } from '../global-variables.service';
 export class SidebarComponent implements OnInit {
   allChannels = [];
   allMessages = [];
+  user: any;
   test ='';
   selectedChat!: string;
   channels = new channels;
@@ -44,14 +45,13 @@ export class SidebarComponent implements OnInit {
   setChatVar(string: string) {
     this.globalV.setChannel(string);
     this.test = string;
-    
   }
 
   
   setMessageVar(string: string) {
     this.globalV.setMessage(string);
     this.test = string;
-    
   }
+
 
 }

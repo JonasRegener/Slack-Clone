@@ -95,7 +95,7 @@ export class AuthService {
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
-        this.router.navigate(['channels']);
+        this.router.navigate(['channels/' + this.channel]);
       }
     });
   }
@@ -105,7 +105,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['channels']);
+          this.router.navigate(['channels/' + this.channel]);
         });
         this.SetUserData(result.user);
       })

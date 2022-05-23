@@ -15,7 +15,7 @@
     </button>
     <mat-list-option *ngFor="let messages of allMessages">
         <p routerLink="/messaging/{{messages['customIdName']}}" (click)="setMessageVar(messages['customIdName'])">
-            {{ messages['customIdName'] }}</p>
+            {{ messages['receiverUID'] }}</p>
     </mat-list-option>
     <div class="selected-option">
         <p>

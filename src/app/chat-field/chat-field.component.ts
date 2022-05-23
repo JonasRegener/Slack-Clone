@@ -6,6 +6,7 @@ import { GlobalVariablesService } from '../global-variables.service';
 import { Observable, Subject } from 'rxjs';
 import { DialogDeleteThreadComponent } from '../dialog-delete-thread/dialog-delete-thread.component';
 import { DialogChannelInfoComponent } from '../dialog-channel-info/dialog-channel-info.component';
+import { User } from '../authentication/services/user.service';
 @Component({
   selector: 'app-chat-field',
   templateUrl: './chat-field.component.html',
@@ -16,7 +17,7 @@ export class ChatFieldComponent implements OnInit {
   loading = true;
   threadView = false;
   disabled = true;
-  loggedIn = 'Alexander Baraev';
+  loggedIn = '';
   currentChannel = '';
   channelContent: any;
   editorOpened = false;
@@ -38,6 +39,14 @@ export class ChatFieldComponent implements OnInit {
           }, 3000);
         })
     })
+
+    let user: any = window.localStorage.getItem('user');
+    user = JSON.parse(user);
+    console.log(user);
+    
+    
+    
+    
 
     this.globalV.getThreadView().subscribe(item => {
       this.threadView = item;
@@ -107,10 +116,8 @@ export class ChatFieldComponent implements OnInit {
   deleteThread(content: any) {
     const dialogRef = this.dialog.open(DialogDeleteThreadComponent);
     dialogRef.componentInstance.input = content;
-    // dialogRef.componentInstance.threadView = this.threadView;
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('content:', content);
     });
   }
 

@@ -3,15 +3,23 @@
         <div class="authBlock">
             <h3>Sign In</h3>
             <div class="formGroup">
-                <input type="text" class="formControl" placeholder="Username" #userName required>
+                <input type="text" class="formControl" placeholder="Username" #userName required [disabled]="checkbox.checked">
             </div>
             <div class="formGroup">
-                <input type="password" class="formControl" placeholder="Password" #userPassword required>
+                <input type="password" class="formControl" placeholder="Password" #userPassword required [disabled]="checkbox.checked">
             </div>
+
+            <div class="testUserLogin">
+                <input type="checkbox" id="testUser" #checkbox (change)="true">
+                <label for="testUser">Log in as a test user</label>
+            </div>
+
             <!-- Calling SignIn Api from AuthService -->
             <div class="formGroup">
-                <input type="button" class="btn btnPrimary" value="Log in"
+                <input *ngIf="!checkbox.checked" type="button" class="btn btnPrimary" value="Log in"
                     (click)="authService.SignIn(userName.value, userPassword.value)">
+                <input *ngIf="checkbox.checked" type="button" class="btn btnPrimary" value="Log in"
+                    (click)="authService.SignIn('test@test.de', 'password')">
             </div>
             <div class="formGroup">
                 <span class="or"><span class="orInner">Or</span></span>
@@ -28,8 +36,8 @@
             </div>
         </div>
         <div class="redirectToLogin">
-            <span style="flex-direction: unset;">Don't have an account?<span class="redirect"
-                    routerLink="/sign-up"> Sign Up</span></span>
+            <span style="flex-direction: unset;">Don't have an account?<span class="redirect" routerLink="/sign-up">
+                    Sign Up</span></span>
         </div>
     </div>
     <div class="backgroundDesign"></div>

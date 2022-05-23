@@ -28,3 +28,15 @@ span {
         cursor: pointer;
     }
 }
+
+.testUserLogin {
+    display: flex;
+    flex-direction: row;
+
+    input {
+        padding: unset;
+        margin: unset;
+        width: unset;
+        margin-right: 18px;
+    }
+}
