@@ -7,3 +7,22 @@
     height: 87vh;
     overflow: hidden;
 }
+
+.profil_img {
+    max-height: 400px;
+    max-width: 400px;
+    margin-top: 56px;
+    margin-right: 56px;
+    margin-bottom: 28px;
+}
+
+.profil-details {
+    background-color: rgba($color: #692154c4, $alpha: 0.4);
+    margin-right: 28px;
+    margin-left: 28xp;
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 6px;
+    }
+}
