@@ -6,6 +6,8 @@ import { GlobalVariablesService } from '../global-variables.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCreateMessageComponent } from '../dialog-create-message/dialog-create-message.component';
 import { NewChannelComponent } from '../new-channel/new-channel.component';
+import { doc, deleteDoc } from "firebase/firestore";
+
 
 
 @Component({
@@ -16,10 +18,11 @@ import { NewChannelComponent } from '../new-channel/new-channel.component';
 export class SidebarComponent implements OnInit {
   allChannels = [];
   allMessages = [];
+  deleteItem = '';
   user: any;
   newChannelname = '';
   userDB: any;
-  test ='';
+  test = '';
   selectedChat!: string;
   channels = new channels;
   constructor(private firestore: AngularFirestore, public globalV: GlobalVariablesService, public dialog: MatDialog, private changeDetectorRef: ChangeDetectorRef) { }
@@ -38,11 +41,11 @@ export class SidebarComponent implements OnInit {
         console.log('Messages are found', this.allChannels[0]['name']);
       });
 
-      this.firestore
+    this.firestore
       .collection('users')
       .valueChanges()
       .subscribe((result: any) => {
-          this.userDB = result;    
+        this.userDB = result;
       })
   }
 
@@ -56,12 +59,12 @@ export class SidebarComponent implements OnInit {
 
   }
 
-  getReceiverName(receiverUID: string){
-    for(let i = 0; i < this.userDB.length; i++) {
-      if(this.userDB[i].uid == receiverUID){
+  getReceiverName(receiverUID: string) {
+    for (let i = 0; i < this.userDB.length; i++) {
+      if (this.userDB[i].uid == receiverUID) {
         return this.userDB[i].displayName;
       }
-    }    
+    }
   }
 
 
@@ -71,7 +74,7 @@ export class SidebarComponent implements OnInit {
 
   }
 
-  
+
   setMessageVar(string: string) {
     this.globalV.setMessage(string);
     this.test = string;
@@ -91,5 +94,29 @@ export class SidebarComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
     });
   }
+  deleteChannel(afterAll: string) {
+    console.log('Test', afterAll)
 
+    this.firestore
+      .collection('channels')
+      .doc(afterAll)
+      .delete()
+      
+
+
+
+
+  }
+  deleteSth(afterAll: any) {
+    //   console.log('Test', afterAll)
+
+    //  this.firestore
+    //    .collection('messages')
+    //    .doc()
+    //    .delete()
+
+
+
+
+  }
 }

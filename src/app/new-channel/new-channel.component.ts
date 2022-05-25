@@ -16,16 +16,23 @@ export class NewChannelComponent implements OnInit {
   allChannels = [];
   allMessages = [];
   user: any;
+  users: any;
   newChannelName = '';
   userDB: any;
   test = '';
   data: any;
   selectedChat!: string;
   channels = new channels;
+  loggedIn: any;
   constructor(public dialogRef: MatDialogRef<NewChannelComponent>, public firestore: AngularFirestore, public globalV: GlobalVariablesService, public router: Router) {
   }
 
   ngOnInit(): void {
+
+    this.globalV.getUser().subscribe(user => {
+      this.loggedIn = user;
+    })
+
     this.firestore
       .collection('channels')
       .valueChanges()
@@ -34,15 +41,27 @@ export class NewChannelComponent implements OnInit {
         this.allChannels = changes;
 
       });
+    this.firestore
+      .collection('users')
+      .valueChanges()
+      .subscribe(result => {
+        this.users = result;
+      })
+
+
+
   }
 
   createNewChannel() {
-    console.log(this.newChannelName)
-   
-    
+    console.log(this.loggedIn.displayName)
+
+
     this.firestore
       .collection('channels')
-      .add({'name': this.newChannelName})
+      .add({
+        'name': this.newChannelName, 'members': // this.loggedIn.displayName 
+          'Test variable leider Leer deswegen Fehlerhaft'
+      })
       .then((docRef) => {
         this.dialogRef.close();
         this.globalV.setChannel(this.newChannelName);

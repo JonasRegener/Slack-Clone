@@ -7,7 +7,7 @@
 
     <mat-list-option *ngFor="let channels of allChannels">
         <p routerLink="/channels/{{ channels['name'] }}" (click)="setChatVar(channels['name'])"> {{ channels['name']
-            }}</p>
+            }} <button (click)="deleteChannel(channels['name'])"> X </button></p>
     </mat-list-option>
     <button mat-icon-button color="primary" class="ml-16 add-channel-button" (click)="createMessage()">New private
         Message
@@ -16,6 +16,7 @@
     <mat-list-option *ngFor="let messages of allMessages">
         <p routerLink="/messaging/{{messages['customIdName']}}" (click)="setMessageVar(messages['customIdName'])">
             {{ getReceiverName(messages['receiverUID']) }}
+            <button (click)="deleteSth(messages['customIdName'])"> X </button>
         </p>
     </mat-list-option>
     <div class="selected-option">

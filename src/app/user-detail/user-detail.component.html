@@ -19,7 +19,7 @@
             </mat-card-content>
         </mat-card>
         <mat-card-actions class="">
-            <button mat-button (click)="authService.SignOut()" *ngIf="authService.userData as user"
+            <button class="log-out-btn" mat-button (click)="authService.SignOut()" *ngIf="authService.userData as user"
                 matTooltip="Klicke hier um dich auszuloggen">Ausloggen</button>
             <button mat-button routerLinkActive="router-link-active" routerLink="/channels/{{ channel }}"> Zurück zu den
                 Channels </button>
